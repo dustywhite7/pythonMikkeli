@@ -27,20 +27,21 @@ This  course  is  intended to  introduce  the  student  to  programming  languag
 
 | Assignment | Point Value |
 |---|---|
-| Homework (Combined) | 600 | 
-| Project | 200 | 
-| Project Presentation | 100 |
-| Discussion \& Participation | 100 | 
+| Homework (Combined) | 60 | 
+| Project | 25 | 
+| Project Proposal | 5 |
+| Discussion \& Participation | 10 | 
 
 ### Grade Scale
-| Grade | Threshold | Grade | Threshold | 
-|---|---|---|---|
-| A | 93-100% | C | 73-76.9% |
-| A- | 90-92.9% | C- | 70-72.9% | 
-| B+ | 87-89.9% | D+ | 67-69.9% | 
-| B | 83-86.9% | D | 63-66.9% | 
-| B- | 80-82.9% | D- | 60-62.9% | 
-| C+ | 77-79.9% | F | 59.9% or less | 
+| Grade | Threshold |
+|---|---|
+| 90 - 100 | 5 |
+|80 - 89 | 4 |
+|70 - 79 | 3 |
+|60 - 69 | 2 |
+|50 - 59 | 1 |
+|0 - 49 | 0 |
+
 
 
 ### Class Schedule
@@ -75,27 +76,27 @@ Introducing Linear Regression and its implementation in Python. Linear regressio
 
 #### Day 8
 
-Logistic Regression in Python. Logistic regression is our first model capable of performing classification. We will discuss differences between linear and logistic regression, and implement models in code.
+Classification and Regression Trees. Decision trees will give us a chance to discuss machine learning and why it differs from regression analysis.
 
 #### Day 9
 
-Classification and Regression Trees. Decision trees will give us a chance to discuss machine learning and why it differs from regression analysis.
+Random Forests and ensemble methods. Ensemble methods provide improved accuracy and robustness relative to single machine learning models. We will explore these properties through random forest models.
 
 #### Day 10
 
-Support Vector Machines. We will discuss the difference in approach between Decision Trees and SVMs, and implement the latter as we explore more model options.
+Clustering models. We will explore unsupervised learning through the k-means clustering algorithm, and learn about trying to identify various groups of observations within data, both as a tool for prediction, as well as for better understanding the available data.
 
 #### Day 11
 
-Random Forests and ensemble methods. Ensemble methods provide improved accuracy and robustness relative to single machine learning models. We will explore these properties through random forest models.
+Regular Expression and text analysis. Sometimes it is advantageous to be able to process text into quantifiable information. Regex provides us the capability to transform text and quickly extract patterns from raw data.
 
 #### Day 12
 
-Clustering models. We will explore unsupervised learning through the k-means clustering algorithm, and learn about trying to identify various groups of observations within data, both as a tool for prediction, as well as for better understanding the available data.
+Web scraping allows an analyst to collect data from nearly any resource that can be accessed online. This powerful tool allows for the examination of complex problems and the creative collection of resources to address many different needs.
 
 #### Day 13
 
-Regular Expression and text analysis. Sometimes it is advantageous to be able to process text into quantifiable information. Regex provides us the capability to transform text and quickly extract patterns from raw data.
+Where possible, the use of Web APIs to streamline data collection is a valuable tool. Data collected by API is typically clean and standardized, unlike the data that is collected through web scraping. We will explore the Twitter API as an introduction to using APIs.
 
 #### Day 14
 
@@ -107,7 +108,7 @@ Project presentations. Each student will present a brief summary of a research q
 
 ### Assignments
 
-Assignments will be completed in Mimir, and will correspond to each of the topics covered in class.
+Assignments will be completed in Mimir, with one assignment corresponding to each of the topics covered in class. This makes for 13 assignments in total.
 
 ### Project
 
