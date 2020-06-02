@@ -64,7 +64,7 @@ Data Frames and Pandas. We will practice importing and utilizing data in Python.
 
 #### Day 5
 
-Numpy, Scipy, and math in Python. In order to perform complex mathematical and statistical functions, we can use pre-built libraries like Numpy and Scipy. These libraries include functions for generating pseudo-random numbers, sampling from statistical distributions, and working with matrices and vectors.
+Regular Expression and text analysis. Sometimes it is advantageous to be able to process text into quantifiable information. Regex provides us the capability to transform text and quickly extract patterns from raw data.
 
 #### Day 6
 
@@ -88,7 +88,7 @@ Clustering models. We will explore unsupervised learning through the k-means clu
 
 #### Day 11
 
-Regular Expression and text analysis. Sometimes it is advantageous to be able to process text into quantifiable information. Regex provides us the capability to transform text and quickly extract patterns from raw data.
+Cross-Validation. We want our models to work in the real world. Using cross-validation, we can use our data to mimic the real-world and ensure that, to the best of our ability, our data practices represent the events that we expect to encounter as we implement our models.
 
 #### Day 12
 
