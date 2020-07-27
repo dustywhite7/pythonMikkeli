@@ -50,7 +50,7 @@ Your workspace
 
 ---
 
-### Introducing... Python!
+# Introducing... Python!
 
 - A dynamically typed language
 - High-level
@@ -61,18 +61,17 @@ Your workspace
 
 ---
 
-### Getting Started in Python
+# Getting Started in Python
 
-- Open Spyder (locally), or the Mimir IDE
+- Open a Mimir Notebook
 	- Mimir allows us to execute code on a remote server, processing the code on more powerful machines
-	- The computers here in the lab are just virtual instances, and are slower at running code, but may be easier to use as you get started
 - Let's write some Python!
 
 ---
 
-### A simple program in Python
+# A simple program in Python
 
-<br>
+Copy this program into a cell in your notebook:
 
 ```python
 import numpy as np
@@ -91,7 +90,7 @@ def manhattanDistance(coord1, coord2):
 
 ---
 
-### A simple program in Python
+# A simple program in Python - Explained
 
 ```python
 import numpy as np
@@ -103,7 +102,7 @@ import numpy as np
 
 ---
 
-### A simple program in Python
+# A simple program in Python - Explained
 
 ```python
 def manhattanDistance(coord1, coord2):
@@ -119,7 +118,7 @@ Functions accept arguments, and can be made to **return** values, as well.
 
 ---
 
-### A simple program in Python
+# A simple program in Python - Explained
 
 ```python
 if len(coord1)==len(coord2):
@@ -134,7 +133,7 @@ We can easily incorporate different kinds of conditions into our code using ```i
 
 ---
 
-### A simple program in Python
+# A simple program in Python - Explained
 
 ```python
 for i in range(len(coord1)):
@@ -147,7 +146,7 @@ For loops allow us to repeat code multiple times with minor variations, so that 
 
 ---
 
-### Core Data Types in Python
+# Core Data Types in Python
 
 Core types are the base types that everything else in Python will be built upon:
 1) Numbers, Strings, Booleans, None
@@ -157,7 +156,7 @@ Core types are the base types that everything else in Python will be built upon:
 
 ---
 
-### Numbers
+# Numbers
 
 **Common**
 
@@ -167,18 +166,18 @@ Core types are the base types that everything else in Python will be built upon:
 **Not so common**
 
 3. Complex numbers  
-4. Rational numbers
+4. Rational numberss
 
 ---
 
-### Numbers
+# Numbers
 
 Numbers support basic arithmetic like we are familiar with:
 <br>
 
 - Addition and subtraction: ```15+3```, ```0-4```
 - Multiplication and division: ```2*4```, ```3/5```
-- Exponentiation: ```2**4``` is $2^4$
+- Exponentiation: ```2**4``` denotes $2^4$
 
 <br>
 
@@ -186,7 +185,7 @@ We will also be able to import greater functionality from modules like ```numpy`
 
 ---
 
-### Strings
+# Strings
 
 Strings are collections of characters with defined positions. Strings are also **immutable**, meaning that they cannot be modified, only replaced.
 
@@ -202,7 +201,7 @@ Strings are collections of characters with defined positions. Strings are also *
 
 ---
 
-### Strings
+# Strings
 
 We can access elements of strings using index values beginning at 0, **or** we can access them by giving negative index values to indicate that we are counting from the end of the string to the front. An index of ```-1``` refers to the last element in the string.
 
@@ -218,7 +217,7 @@ We can access elements of strings using index values beginning at 0, **or** we c
 
 ---
 
-### Strings
+# Strings
 
 We can **slice** a string, selecting a series of elements from within the string together.
 
@@ -239,7 +238,7 @@ We can also **concatenate** strings:
 
 ---
 
-### Booleans
+# Booleans
 
 Booleans are data types that only permit storage of a binary value:
 
@@ -259,7 +258,7 @@ False
 
 ---
 
-### None
+# None
 
 Python also has a ```None``` type that is frequently used to initialize objects. It can also be used to serve functions like determining whether or not information has been received
 
@@ -273,7 +272,7 @@ else:
 
 ---
 
-### Lists
+# Lists
 
 Like strings, lists contain multiple elements. Unlike strings, these can be any type of data. Lists can also be modified in place (**mutable**).
 
@@ -290,7 +289,7 @@ Like strings, lists contain multiple elements. Unlike strings, these can be any 
 
 ---
 
-### Lists
+# Lists
 
 Lists can be **iterated** on:
 
@@ -314,7 +313,7 @@ They can be appended to:
 
 ---
 
-### Lists
+# Lists
 
 Lists can be "popped":
 
@@ -338,7 +337,7 @@ myList.reverse()
 
 ---
 
-### Lists
+# Lists
 
 Lists can also have lists as elements, and are then referred to as "a list of lists"
 
@@ -353,7 +352,7 @@ We can embed lists infinitely deep (list of lists of lists...), allowing us to c
 
 ---
 
-### Tuples
+# Tuples
 
 Tuples are **immutable** lists. They cannot be modified in place, and are useful when you don't want to accidentally change any values.
 <br>
@@ -368,7 +367,7 @@ TypeError: 'tuple' object does not support item assignment
 
 ---
 
-### Dictionaries
+# Dictionaries
 
 While strings, lists and tuples have specific orders, dictionaries approach the organization of data differently, using a `key:pair` combination to store data that can be found using the index provided by the programmer to the dictionary.
 
@@ -384,7 +383,7 @@ KeyError: 0
 
 ---
 
-### Dictionaries
+# Dictionaries
 
 Like lists, dictionaries can be nested, iterated and are mutable.
 
@@ -402,7 +401,7 @@ Like lists, dictionaries can be nested, iterated and are mutable.
 
 ---
 
-### Dictionaries
+# Dictionaries
 
 Two examples of iterating on a dictionary:
 
@@ -425,7 +424,7 @@ White
 
 ---
 
-### Modules
+# Modules
 
 Modules are pre-written code that can be imported to make your life easier.
 
@@ -440,11 +439,16 @@ In this case, the module is ```numpy```, a numeric library already mentioned.
 
 ---
 
-### What if I can't remember all this?
+# What if I can't remember all this?
 
 DON'T PANIC!
 
 This is a LOT of information! Fortunately, we have **DOCUMENTATION** to help us make sure that we are doing the right thing.
+
+
+---
+
+# Reading Documentation
 
 To get started, let's look at the [Numpy Random Sampling Documentation](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
 
@@ -453,7 +457,7 @@ Keep in mind, [StackOverflow](stackoverflow.com) is a great website to help us f
 
 ---
 
-### Documentation
+# Documentation Matters!
 
 Learning to read documentation is a critical component of becoming a programmer, or using programming for pretty much any purpose.
 
