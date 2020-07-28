@@ -68,7 +68,7 @@ dist+=np.abs(myCoord1[2]-myCoord2[2])
 What might go wrong with the code on the previous slide?
 - What if I want to use a new set of coordinates with 4 dimensions?
 - What if I don't notice that my coordinates do not have the same number of dimensions?
-- What if I want to run that code as part of antother program in a different file?
+- What if I want to run that code as part of another program in a different file?
 - What if I want to use Euclidean Distance in the future?
 
 
@@ -112,7 +112,14 @@ Write a function that returns the product of two numbers (note: the product of x
 - What is the result of ```product(2,5)```?
 - What is the result of ```product(2.71828,5)```?
 - What is the result of ```product("Howdy!",3)```?
-	- How about ```product(3,"Howdy!")```?
+
+---
+
+
+# Observations
+
+When we use the function ```product```, we are able to use a string as one argument. Why?
+- Python is able to determine that the multiplier function ```string * y``` means that we want to repeat a string $y$ times.
 
 ---
 
@@ -129,13 +136,6 @@ Write a function that ONLY utilizes your ```product``` function to calculate the
 
 ---
 
-# Observations
-
-When we use the function ```product```, we are able to use a string as one argument. Why?
-- Python is able to determine that the multiplier function ```string * y``` means that we want to repeat a string $y$ times.
-- We need to use this carefully, however, as we discover when we try to determine the area of a circle with radius ```"Howdy!"```. That really doesn't make sense, and Python agrees, giving us an error.
-
----
 
 # Observations
 
@@ -163,6 +163,12 @@ def areaCircle(r):
 - We can use functions inside of functions
 - Use small functions to build part of a whole
 - We can even use functions **recursively**
+
+---
+
+# Recursive Functions
+
+![w:400](https://cdn.shopify.com/s/files/1/1061/1924/products/7_grande.png?v=1571606116)
 
 
 ---
