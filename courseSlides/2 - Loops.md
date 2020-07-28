@@ -6,7 +6,7 @@ class: default
 size: 4:3
 ---
 
-# Week 2 - Conditions and Loops
+# Conditions and Loops
 
 ---
 
@@ -14,7 +14,7 @@ size: 4:3
 
 We often want to use logical statements (a test of whether or not some condition holds) to determine what our program should do.
 
-Here is some pseudocode (a framework of what we want our code to do, but not written in code yet):
+Here is some pseudocode (a framework of what we want our code to do, but not written in real code yet):
 
 ```text
 if condition1 is true
@@ -54,13 +54,13 @@ Set ```a=12``` and ```b=100```. What happens? What if ```b=12```?
 
 ---
 
-# If, Else Statements
+# Making a Good Condition
 
 - ```if```, ```else``` statements are order dependent!
 - The logic must be clear
-	- Can't compare strings to integers, for example
+	- Shouldn't compare strings to integers, for example
 - You must enumerate all possible outcomes. If not, your code might surprise you!
-	- Remember, computers are stupid, and only do what they are told
+	- Remember, computers are stupid (like, REALLY stupid), and only do what they are told
 	- This is the ["Garbage in, garbage out"](https://en.wikipedia.org/wiki/Garbage_in,_garbage_out) principle
 
 ---
@@ -148,7 +148,7 @@ Note: ```*=``` means to multiply and then update the value, and `**=` means expo
 
 # Some Shorthand
 
-We can also write for loops as **iterators** in order to use them to quickly create lists:
+We can also write for loops as **list comprehensions** in order to use them to quickly create lists:
 
 ```python
 myList = [x**2 for x in range(1,11)]
@@ -162,22 +162,23 @@ for i in range(1,11):
     myList.append(i**2)
 ```
 
-This will come in very handy on occasion
+This will come in very handy on occasion, and saves a lot of typing
 
 ---
 
-# Some Shorthand
+# More Shorthand
 
 - ```+=``` means to add the second value, and assign the sum to the original variable
 - ```-=``` means to subtract the second value, and assign the difference to the original variable
 - ```*=``` means to multiply the values, and assign the product to the original variable
 - ```/=``` means to divide the first value by the second, and assign the ratio to the original variable
+- ```**=``` means to exponentiate the value (with the second number being the exponent), and assign the product to the original variable
 
 ---
 
 # While Loops
 
-```while``` loops require a logical statement.
+```while``` loops require a logical statement
 - **While** the statement is true, the loop continues to execute
 	- When the condition no longer holds, the loop terminates
 - This is typically where programmers create "infinite loops"
