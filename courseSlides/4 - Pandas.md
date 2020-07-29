@@ -15,19 +15,18 @@ size: 4:3
 
 What are the ways that we have learned so far to handle data?
 
-- Flat Files
 - Lists of lists
 - Dictionaries
 
-None of these are particularly conducive to data exploration and quick manipulation
+Neither of these are particularly conducive to data exploration and quick manipulation
 
 ---
 
 # Introducing Data Frames
 
-When we want to manipulate data in a clean and efficient manner, we want to start thinking about data in terms of vectors:
+When we want to manipulate data in a clean and efficient manner, we need to think about data in terms of vectors/columns:
 
-- Each variable can be considered a vector
+- Each variable can be considered a vector/column
 - Operations on a variable can be applied to all observations uniformly
 - We can quickly reduce the number of variables for specific questions
 
@@ -54,11 +53,11 @@ data = pd.DataFrame()
 ```
 
 A Data Frame is a class that accepts the following parameters:
-- `data`
-- `index` (for referencing individual rows)
-- `columns` (so you can name your variables)
-- `dtype` (specify the **kind** of data for each column/variable)
-- `copy` (whether or not the data should be copied)
+- `data` (optional - can be list of lists, or dictionary)
+- `index` (optional - for referencing individual rows)
+- `columns` (optional - so you can name your variables)
+- `dtype` (optional - specify the **kind** of data for each column/variable)
+- `copy` (optional - whether or not the data should be copied)
 
 ---
 
@@ -90,7 +89,7 @@ To access a list of all of the column names in your Data Frame:
 data.columns
 ```
 
-To then reference a single column:
+To reference a single column:
 
 ```python
 data['Column_Name']
@@ -137,13 +136,7 @@ data.loc[:, 'ColumnName'] # Selects all rows, one column
 
 # Slicing the Data Frame
 
-Two selection (or slicing) tools allow us to quickly subset our data.
-
-```python
-data.loc[row_selection, column_selection]
-```
-
-With the `.loc` method (now with no `i`), we can provide **name**-based selections, choose to select all rows or columns, and create subsets based on conditions.
+We can even provide logical statements to **filter** our data based on some rule that can be evaluated!
 
 ```python
 data.loc[data['Column1'] == some_value, :]
@@ -196,8 +189,8 @@ Processing Datetimes is also easy with built-in Pandas functionality:
 
 ```python
 data['myDate'] = pd.to_datetime(data['stringDateColumn'],
-  format = '%Y%m%d', # Need to indicate the correct 
-  errors = 'ignore') #   format for your data!
+  format = '%Y%m%d', # You might need to indicate 
+  errors = 'ignore') #  the correct format for your data!
 ```
 
 We can also parse the data into separate columns afterward:
@@ -213,7 +206,7 @@ data['day'] = data['myDate'].dt.day
 
 <br>
 
-A full list of the ways you can process dates is available at [https://pandas.pydata.org/pandas-docs/stable/api.html#datetimelike-properties](https://pandas.pydata.org/pandas-docs/stable/api.html#datetimelike-properties).
+A full list of the ways you can process dates is available at [https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#time-date-components](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#time-date-components).
 
 
 
@@ -232,6 +225,16 @@ data.fillna(0, inplace = True)
 data['Column'].fillna(method='pad') # fill values forward
 # We can use method 'backfill' to use the NEXT value,
 #   and fill backwards
+```
+
+---
+
+# Cleaning Data
+
+You can also just drop observations with missing values if needed:
+
+```py
+data.dropna(inplace=True)
 ```
 
 
@@ -258,7 +261,7 @@ data.describe().T[['count','mean','std','min','max']]
 
 # Using SQL with Python
 
-In order to handle data on a large scale, we will frequently rely on SQL databases. In this class, we will practice with SQLite.
+In order to handle data on a large scale, we frequently rely on SQL databases. In this class, we will practice with SQLite.
 
 Here is a link to the documentation:
 [https://docs.python.org/3/library/sqlite3.html](https://docs.python.org/3/library/sqlite3.html)
@@ -356,3 +359,7 @@ data[['Average Attendance', 'Year']].apply(lambda x: x.max() - x.min())
 ```
 
 Calculates the difference between the min and max of the attendance and year columns
+
+---
+
+# Lab Time!
