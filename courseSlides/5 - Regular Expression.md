@@ -34,8 +34,7 @@ In the past, as we have dealt with text, we have needed to meet EXACT conditions
 ```python
 >>> "mystring" == "MyString"
 False
->>> "mystring" == "MyString".lower()
-True
+>>> [i for i in range(1000) if '4' in i]
 ```
 
 If the exact condition is not met, then we cannot apply conditions based on this equality.
@@ -309,7 +308,7 @@ re.search(r'(100|[1-9][0-9]|[0-9])', mystring)
 Here, we use a new symbol: `|` (call it the "pipe")
 - Pipes are used to denote options
 
-What we are saying is that our result should be `100` or a number with the first digit between 1 and 9 and the second digit between 0 and 9, or a single digit between 0 and 9.
+What we are saying is that our result should be `100`, OR a number with the first digit between 1 and 9 and the second digit between 0 and 9, OR a single digit between 0 and 9.
 
 
 ---
