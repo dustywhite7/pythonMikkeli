@@ -38,7 +38,7 @@ When we suspect a causal relationship (that $x$ causes $y$), it is important to 
 
 In order to establish causality, we need to meet several conditions:
 
-- We can explain **why** $x$ causes $y$
+- We can explain (or at lest hypothesize) **why** $x$ causes $y$
 - We can demonstrate that **nothing else is driving the changes** (within reason)
 - We can show that there is a **correlation** between $x$ and $y$
 
