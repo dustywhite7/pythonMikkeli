@@ -173,9 +173,20 @@ import pandas as pd
 import numpy as np
 import patsy as pt
 
-from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+```
+
+---
+
+# Wait, what is `patsy`??
+
+We can use the `patsy` library to create new data frames using regression equations like the ones that are built into `R` or `statsmodels`
+
+```py
+y, x = pt.dmatrices("y ~ x1 + x2 ...", data=data,
+          return_type = 'dataframe')
 ```
 
 ---
@@ -189,18 +200,18 @@ data = pd.read_csv(
   + "raw/master/DataSets/titanic.csv")
 
 
-model = DecisionTreeClassifier()
+model = tree.DecisionTreeClassifier()
 
 y, x = pt.dmatrices("Survived ~ -1 + Sex + Age 
-		+ SibSp + Pclass", data=data)
+		+ SibSp + Pclass", data=data, return_type='dataframe')
 
-x, xt, y, yt = train_test_split(x, y, 
+x_train, x_test, y_train, y_test = train_test_split(x, y, 
 		test_size=0.33, random_state=42)
 
-res = model.fit(x,y)
+res = model.fit(x_train,y_train)
 
 print("\n\nIn-sample accuracy: %s%%\n\n" 
- % str(round(100*accuracy_score(y, model.predict(x)), 2)))
+ % str(round(100*accuracy_score(y_test, model.predict(x_test)), 2)))
 ```
 
 
@@ -213,6 +224,18 @@ Using the Titanic dataset, and predicting survival with sex, age, siblings, and 
 **In-sample accuracy: 94.35%**
 
 For being easy to implement, that is a pretty good prediction!
+
+---
+
+# Visualizing the Model
+
+<br>
+
+```py
+tree.plot_tree(res,
+  feature_names = x.columns,
+  rounded = True)
+```
 
 ---
 
@@ -252,6 +275,7 @@ Typically, both bias and variance can be reduced by training models on a larger 
 
 - These models are designed to converge on truth
 - Assuming that we have **representative** data
+- When $n$ goes to INFINITY
 
 ---
 
@@ -358,7 +382,7 @@ It's small on the slide, but it is now a reasonably readable algorithm. At most,
 
 ---
 
-# A Note on Cross-Validation
+<!-- # A Note on Cross-Validation
 
 ```python
 from sklearn.model_selection import KFold
@@ -380,6 +404,6 @@ print("Mean Model Accuracy: ",          # Print aggregate
   np.mean([model[1] for model in models]))
 ```
 
----
+--- -->
 
 # Lab Time!

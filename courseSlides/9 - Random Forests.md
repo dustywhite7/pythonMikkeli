@@ -44,18 +44,18 @@ How do most developed countries now choose leaders?
 - They vote!
 
 Why?
-- NOT because we care if everyone has their opinion heard (see history of voting rights)
+- NOT because we care if everyone has their opinion heard (see history of voting rights for supporting evidence)
 - Because large groups of people, when their opinions are averaged, make ~~good~~ better choices
 
 ---
 
 ### Why Ensembles?
 
-I had a class of undergraduates who averaged 55% on their final exam.
+I had a class of students who averaged 55% on their final exam.
 
-On the other hand, a student who had chosen the most popular response to each question based on the responses of their classmates would have scored ~85%.
+On the other hand, a student who chose the most popular response to each question based on the responses of their classmates would have scored ~85%.
 
-**In aggregate, poor students can select good answers**
+**In aggregate, bad students can find good answers**
 
 
 ---
@@ -76,7 +76,7 @@ Bagging (**B**ootstrap **Agg**regation) is a simple way to start creating an ens
 
 Standard Model:
 
-$$ \hat{f}(x) = f^*(x) $$
+$$ f^*(x)  = \frac{1}{n}\sum_{i=0}^{n}f_i(x)$$
 
 <br>
 
@@ -130,17 +130,6 @@ Once each tree in a random forest has been grown, we can use the trees to create
 - Each tree classifies an observation
 - Whichever class receives the most votes (has highest predicted probability of being the true observed class) "wins," and is assigned as the predicted class for the observation
 
----
-
-### MNIST Dataset
-
-[MNIST Handwriting Recognition Data](http://yann.lecun.com/exdb/mnist/) 
-- Contains digits 0-9
-- Full Dataset is 60,000 training observations, 10,000 testing observations
-- 28 x 28 pixel images, (784 factors)
-- Numbers are centered in the image
-- Goal is to predict the written digit based on the image
-- Great learning dataset
 
 ---
 
@@ -227,6 +216,19 @@ Resulting in:
 
 1. Decision Tree: 65.5%
 2. Random Forest: 68.2%
+
+---
+
+
+### MNIST Dataset
+
+[MNIST Handwriting Recognition Data](http://yann.lecun.com/exdb/mnist/) 
+- Contains digits 0-9
+- Full Dataset is 60,000 training observations, 10,000 testing observations
+- 28 x 28 pixel images, (784 factors)
+- Numbers are centered in the image
+- Goal is to predict the written digit based on the image
+- Great learning dataset
 
 ---
 
