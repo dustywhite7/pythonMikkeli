@@ -11,7 +11,7 @@ size: 4:3
 ---
 
 
-# Overfitting
+# Review of Overfitting
 
 How good should we make our model?
 
@@ -39,7 +39,7 @@ We can overfit by including variables in our data that *seem* relevant to the pr
 
 ![](https://www.cookandbynum.com/wp-content/uploads/2018/11/per-capital-cheese.png)
 
-Remember this data from our plotting exercises??
+Remember this??
 
 ---
 
@@ -74,6 +74,7 @@ Knowing how to do this will take practice! We just need to keep trying to refine
 
 - We need tools to help us determine whether or not we have overfit our model
 - Cross-validation provides that toolkit
+- It can be used with ANY model!
 
 ---
 
@@ -195,6 +196,15 @@ Fold 5 Accuracy: 72.62%
 Average Accuracy: 74.58%
 Accuracy Standard Deviation: 1.0%
 ```
+
+---
+
+# After Cross-Validation
+
+Once your cross-validation demonstrates that you have minimized overfitting, it's time to retrain your model
+- We dont USE our cross-fitting models
+- Instead, retrain the model on the ENTIRE dataset
+- This maximizes the information your model can use to predict future observations
 
 ---
 
