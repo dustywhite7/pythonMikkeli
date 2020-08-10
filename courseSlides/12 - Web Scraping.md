@@ -6,6 +6,12 @@ class: default
 size: 4:3
 ---
 
+# Final Presentations - Friday!
+4-5 minutes, with 2 minutes after for questions
+
+---
+
+
 # Web Scraping
 
 ---
@@ -316,7 +322,7 @@ The code on following slides is also part of the function
         return newData
 ```
 
-*This is the end of the function!*
+### This is the end of the function!
 
 ---
 
