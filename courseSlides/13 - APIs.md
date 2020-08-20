@@ -10,11 +10,9 @@ size: 4:3
 
 ---
 
----
+# What is an API?
 
-### What is an API?
-
-**API: Application programming interface**
+#### API: Application programming interface
 
 <br>
 
@@ -27,7 +25,7 @@ This is how applications do things like
 
 ---
 
-### Why use an API?
+# Why use an API?
 
 If we wanted to, we could scrape web pages for most of the data that we want.
 
@@ -39,17 +37,17 @@ This means loading lots of unnecessary data, as well as being restricted to (mos
 
 ---
 
-### Why use an API?
+# Why use an API?
 
 With an API, we can make requests to the server for specific information.
 
-- We can make authenticated requests for private information (MUCH harder when scraping)
+- We can make authenticated requests for **private information** (MUCH harder when scraping)
 - We don't have to load whole websites
 - We don't have to hunt through HTML for the information we care about.
 
 ---
 
-### Useful APIs
+# Useful APIs
 
 - [Quandl Financial Data](www.quandl.com) - Information on many unique financial metrics
 - [Twitter Search](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html) - Track historic trends on a given topic ([realtime](https://developer.twitter.com/en/docs/tweets/filter-realtime/overview))
@@ -60,20 +58,20 @@ With an API, we can make requests to the server for specific information.
 
 ---
 
-### Cool! So how can I use one?
+# Cool! So how can I use one?
 
 Let's walk through using an API with the [Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix/start).
 
 First, let's get set up:
 - Need a Google account
 - Need to register on Google Developer services
-- Need to set up an API Key (ties our requests to us for billing purposes, but Google offers everyone a $200 credit per month for maps API requests)
+- Need to set up an API Key (ties our requests to us for billing purposes, but Google offers everyone a $200 credit per month for maps API requests, so we can all just mess with my account for now)
 
 ---
 
-### WARNING
+# WARNING
 
-Using APIs frequently requires setting up a billing account.
+**Using APIs frequently requires setting up a billing account.**
 
 - When we scrape the web, we pretend to be customers, so websites allow us to load their content at no cost (which is why many sites prohibit scraping)
 - When we use APIs, we pay for access, because we are purchasing access to the firm's data, rather than looking to purchase goods/services
@@ -81,7 +79,7 @@ Using APIs frequently requires setting up a billing account.
 
 ---
 
-### Setting up a Google Developer API
+# Setting up a Google Developer API
 
 First, head to [console.cloud.google.com](console.cloud.google.com), so we can set up our accounts.
 
@@ -92,7 +90,7 @@ First, head to [console.cloud.google.com](console.cloud.google.com), so we can s
 
 ---
 
-### Using our API
+# Using our API
 
 Now, let's go back to the [Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix/start)
 
@@ -102,7 +100,7 @@ Now, let's go back to the [Google Distance Matrix API](https://developers.google
 
 ---
 
-### Making Requests via URLs
+# Making Requests via URLs
 
 When we want to request data from the Google Maps API, we do so with a custom URL that specifies
 
@@ -113,7 +111,7 @@ The response provided when accessing that URL gives us the information that we r
 
 ---
 
-### Automating API Requests
+# Automating API Requests
 
 ```python
 import urllib
@@ -123,14 +121,14 @@ import datetime
 import pandas as pd
 ```
 
-- `urllib` enables Python to process url requests
+- `urllib` enables Python to process url requests (kind of like `requests`)
 - `json` provides native JSON handling
 - `time` helps us to check the system clock
-- `datetime` provides the ability to parse dates and times.
+- `datetime` provides the ability to parse dates and times
 
 ---
 
-### Automating API Requests
+# Automating API Requests
 
 ```python
 def fetch_data(url):
@@ -153,7 +151,7 @@ def fetch_data(url):
 
 ---
 
-### Automating API Requests
+# Automating API Requests
 
 ```python
 results = {"timestamp" : [], 
@@ -174,7 +172,7 @@ results = pd.DataFrame(results)
 
 ---
 
-### Automating API Requests
+# Automating API Requests
 
 ```python
 api_key = "AIzaSyAwVHvWNPNOV05zA-hXBHC7DxOBK8AT0qs" # example key (not valid)
@@ -194,7 +192,7 @@ We can start to see how we can use parameters to create an automated URL builder
 
 ---
 
-### Automating API Requests
+# Automating API Requests
 
 ```python
 def map_data(api_key, origin, destination, 
@@ -218,7 +216,7 @@ def map_data(api_key, origin, destination,
 
 ---
 
-### Automating API Requests
+# Automating API Requests
 
 ```python
 def map_data(api_key, origin, destination,
@@ -243,7 +241,7 @@ def map_data(api_key, origin, destination,
 
 ---
 
-### Executing our Query
+# Executing our Query
 
 We now have the functions in place to make queries automatically:
 
@@ -262,7 +260,7 @@ if __name__ == '__main__':
 At this point, we will (eventually) get a DataFrame of our results when the function terminates (in 24 hrs)
 
 ---
-### Results
+# Results
 
 | timestamp | travel_time | distance |
 |:-:|:-:|:-:|:-:|
