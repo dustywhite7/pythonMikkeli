@@ -77,7 +77,7 @@ Sometimes, we need to execute code multiple times, or need to run that code unti
 
 # For Loops
 
-The word ```for``` is reserved in Python to denote the start of a for loop.
+The word ```for``` is reserved in Python to denote the start of a **for loop**.
 
 ```python
 for i in [1,2,3,4,5,6,7,8,9,10]: # repeat code below for
@@ -148,7 +148,7 @@ Note: ```*=``` means to multiply and then update the value, and `**=` means expo
 
 # Some Shorthand
 
-We can also write for loops as **list comprehensions** in order to use them to quickly create lists:
+We can also write for loops as **list comprehensions** in order to quickly create lists:
 
 ```python
 myList = [x**2 for x in range(1,11)]
@@ -161,8 +161,6 @@ myList = []
 for i in range(1,11):
     myList.append(i**2)
 ```
-
-This will come in very handy on occasion, and saves a lot of typing
 
 ---
 

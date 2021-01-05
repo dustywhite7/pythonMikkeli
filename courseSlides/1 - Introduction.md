@@ -37,7 +37,7 @@ A quick tour
 ---
 
 # Github
-All the files
+All the files - [https://github.com/dustywhite7/pythonMikkeli](https://github.com/dustywhite7/pythonMikkeli)
 
 ---
 
@@ -143,6 +143,14 @@ for i in range(len(coord1)):
 <br>
 
 For loops allow us to repeat code multiple times with minor variations, so that we can reduce the amount of code we need to write.
+
+---
+
+# A simple program
+
+Every piece of code that we write will contain **logical statements** that allow the computer to perform tasks that we describe
+
+- The computer/Python will only be as careful as our code!
 
 ---
 
