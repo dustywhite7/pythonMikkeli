@@ -78,7 +78,7 @@ What might go wrong with the code on the previous slide?
 
 
 - Allow for reuse of code
-	- Can import this code in other programs!
+	- Can import functions into other scripts!
 
 
 - Help us to organize our code
@@ -100,6 +100,14 @@ Later, after we have completed the code that runs inside of the function, we wri
 ```python
 	return objects_to_be_returned
 ```
+
+---
+
+# Arguments, Scope
+
+**Arguments** are **variables** that we provide to our function. These variables receive special names (assigned by us), so that our function will work, no matter what specific variables we provide to them.
+
+Arguments to a function are **local** in scope, meaning that these special function names **do not exist outside of our function**
 
 ---
 
@@ -175,11 +183,13 @@ def areaCircle(r):
 
 # Recursive Functions
 
-Try writing a function to calculate [Fibonacci numbers](http://mathworld.wolfram.com/FibonacciNumber.html).
+Try writing a function to calculate [Factorials](https://mathworld.wolfram.com/Factorial.html).
 
-$$F_0=0$$
-$$F_1=F_2=1$$
-$$F_n = F_{n-1} + F_{n-2}$$
+$$0!=1$$
+$$1!=1$$
+$$2! = 2 \times 1$$
+$$3! = 3\times 2 \times 1 $$
+$$n! = n\times n-1 \times n-2 \times ... \times 1$$
 
 How can we write a function to determine an arbitrary Fibonacci number?
 
@@ -189,40 +199,16 @@ How can we write a function to determine an arbitrary Fibonacci number?
 # Recursive Functions
 
 ```python
-def fibonacci(n):
+def factorial(n):
     if n==0:
-        return 0
+        return 1
     elif n==1:
         return 1
-    elif n==2:
-        return 1
     else:
-        return fibonacci(n-1) + fibonacci(n-2)
+        return n*factorial(n-1)
 ```
 
 This function is **recursive** because it calls *itself* in order to complete its own execution.
-
----
-
-# Recursive Functions
-
-Calling ```fibonacci(5)``` will trigger the following procedure:
-
-- Because ```n``` is greater than 2, ```fibonacci(n-1)``` and ```fibonacci(n-2)``` are called
-	- This would be ```fibonacci(4)``` and ```fibonacci(3)```
-- ```fibonacci(4)``` calls ```fibonacci(3)``` and ```fibonacci(2)```
-	- ```fibonacci(2)``` returns a value of ```1```, and ```fibonacci(3)``` calls ```fibonacci(2)``` and ```fibonacci(1)```, which both return values of ```1```, causing ```fibonacci(3)``` to return a value of ```2``` 
-$\cdots$
-
----
-
-# Recursive Functions
-
-- The returned values of ```fibonacci(3)``` (```2```) and ```fibonacci(2)``` (```1```) lead ```fibonacci(4)``` to return a value of 3
-- Remember that ```fibonacci(3)``` was also called by ```fibonacci(5)```, and again will return a value of ```2```
-- ```fibonacci(5)``` thus returns the sum of 3 and 2 (the results of ```fibonacci(4)``` and ```fibonacci(3)```, respectively)
-
-Calling ```fibonacci(5)``` utilized the ```fibonacci(n)``` function 9 times, and did so **recursively**
 
 ---
 
