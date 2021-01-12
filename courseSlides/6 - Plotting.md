@@ -34,13 +34,26 @@ First, we want to import `plotly.express`, which will serve as the engine for cr
 
 ---
 
+# Using Existing Data
+
+
+Let's import a `pandas` Data Frame to play with some :fish: data:
+
+```python
+import pandas as pd
+
+data = pd.read_csv(
+    "https://github.com/dustywhite7/pythonMikkeli/raw/master/exampleData/fishWeight.csv")
+```
+
+
+---
+
 
 # Creating Plot Objects
 
 ```python
-px.scatter(# initialize scatter object
-  x = list(range(2000,2010)), # pass x, y values
-  y = [29.8,30.1,30.5,30.6,31.3,31.7,32.6,33.1,32.7,32.8])
+px.scatter(data, x='Length1', y='Weight')
 ```
 
 <br>
@@ -60,15 +73,12 @@ In this (very) simple example, we plot some time series data. Our figure is rend
 Let's add some formatting. First, we can change the axis labels and title to match :
 
 ```python
-px.scatter(# initialize scatter object
-    x = list(range(2000,2010)), # pass x, y values
-    y = [29.8,30.1,30.5,30.6,31.3,31.7,32.6,33.1,32.7,32.8],
-    title = "PCC by Year", # update the title of the figure
+px.scatter(data, x='Length1', y='Weight',
+    title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Year', # key should match original label
-        'y' : "PCC" # value should be new label value
-    }
-)
+        'x' : 'Fish Length', # key should match original label
+        'y' : "Fish Weight" # value should be new label value
+    })
 ```
 
 ---
@@ -83,13 +93,11 @@ px.scatter(# initialize scatter object
 Next, we can add a regression trendline:
 
 ```python
-px.scatter(# initialize scatter object
-    x = list(range(2000,2010)), # pass x, y values
-    y = [29.8,30.1,30.5,30.6,31.3,31.7,32.6,33.1,32.7,32.8],
-    title = "PCC by Year", # update the title of the figure
+px.scatter(data, x='Length1', y='Weight',
+    title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Year', # key should match original label
-        'y' : "PCC" # value should be new label value
+        'x' : 'Fish Length', # key should match original label
+        'y' : "Fish Weight" # value should be new label value
     },
     trendline = 'ols' # add a linear trendline
 )
@@ -110,12 +118,11 @@ We could instead use line charts
 
 ```python
 px.line(# initialize line object
-    x = list(range(2000,2010)), # pass x, y values
-    y = [29.8,30.1,30.5,30.6,31.3,31.7,32.6,33.1,32.7,32.8],
-    title = "PCC by Year", # update the title of the figure
+    data, x='Length1', y='Weight',
+    title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Year', # key should match original label
-        'y' : "PCC" # value should be new label value
+        'x' : 'Fish Length', # key should match original label
+        'y' : "Fish Weight" # value should be new label value
     }
     )
 ```
@@ -124,60 +131,35 @@ px.line(# initialize line object
 
 ![width:900px](plotly4.png)
 
+### Clearly, not helpful here...
+
+
 ---
 
 # Creating Plot Objects
 
-We can add text to our markers that can be seen when mousing over the points:
+Let's mark multiple series by separating our observations by fish species:
 
 ```python
-px.line(# initialize line object
-    x = list(range(2000,2010)), # pass x, y values
-    y = [29.8,30.1,30.5,30.6,31.3,31.7,32.6,33.1,32.7,32.8],
-    title = "PCC by Year", # update the title of the figure
+px.scatter(data, x='Length1', y='Weight',
+    title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Year', # key should match original label
-        'y' : "PCC" # value should be new label value
-    }
-    )
+        'x' : 'Fish Length', # key should match original label
+        'y' : "Fish Weight" # value should be new label value
+    },
+    trendline = 'ols', # add a linear trendline,
+    color = 'Species'
+)
+
 ```
 
 ---
 
 # Creating Plot Objects
-
-Let's add a second series:
-
-```python
-import pandas as pd
-
-data = pd.DataFrame({'x': list(range(2000,2010))*2,
-                     'y': [29.8,30.1,30.5,30.6,31.3,31.7,32.6,33.1,32.7,32.8]
-                     +[327,456,509,497,596,573,661,741,809,717],
-                     'z': ["PCC"]*10 + ["DIB"]*10})
-
-# Note that the data is "tall", so that the series are stacked
-#   with a third column to denote which values belong to
-#   each series.
-
-px.line(data, x='x', y='y', color='z',
-    title = "PCC by Year", # update the title of the figure
-    labels = { # dictionary for axis labels
-    'x' : 'Year', # key should match original label
-    'y' : "PCC/DIB", # value should be new label value
-    'z' : "Series" # add label for legend
-    })
-```
-
----
-
-# Creating Plot Objects
-
-Our plot now looks something like this:
 
 ![width:700px](plotly5.png)
 
-Evidently, these are not the best series to plot together! :confused:
+Note that we even get a separate trend line for each color group! :smiley:
 
 ---
 
@@ -195,24 +177,12 @@ We can do a LOT more than scatter plots!
 
 among many others.
 
----
 
-# Using Existing Data
-
-
-Let's import a `pandas` Data Frame to play with some :fish: data:
-
-```python
-import pandas as pd
-
-data = pd.read_csv(
-    "https://github.com/dustywhite7/pythonMikkeli/raw/master/exampleData/fishWeight.csv")
-```
 
 ---
 
 
-# Using Existing Data
+# Using Bar Charts
 
 First, we can make a bar chart:
 

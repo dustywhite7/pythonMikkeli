@@ -67,15 +67,15 @@ We can also use pandas to easily read many types of files, and import them as Da
 
 ```python
 # CSV
-data = pd.read_csv(your_filename_here.csv)
+data = pd.read_csv("your_filename_here.csv")
 # or Excel Files
-data = pd.read_excel(your_filename_here.xlsx)
+data = pd.read_excel("your_filename_here.xlsx")
 # or Stata Data
-data = pd.read_stata(your_filename_here.dta)
+data = pd.read_stata("your_filename_here.dta")
 # or SAS Data
-data = pd.read_sas(your_filename_here.sas7bdat)
+data = pd.read_sas("your_filename_here.sas7bdat")
 # or SQL Queries
-data = pd.read_sql(your_query_here, your_connection_here)
+data = pd.read_sql("your_query_here", your_connection_here)
 # and many others!
 ```
 
@@ -275,10 +275,8 @@ The first thing we need to do is to establish a connection to our database:
 
 ```python
 import sqlite3
-engine = sqlite3.connect('nebraska.db')
+engine = sqlite3.connect('exampleDatabase.db')
 ```
-
-We are using `mysql` via the `mysqlconnector` module. Next, we provide our `username:password`, which in this case is "viewer," with no password, so we do not enter text after the colon.
 
 ---
 

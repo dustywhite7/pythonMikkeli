@@ -20,7 +20,7 @@ How have you dealt with text in Python so far?
 
 How have you dealt with text in Python so far?
 
-- Writing to CSV's
+- Reading/Writing CSVs
 - Test equality
 - Passing arguments to functions
 - Other ways?
@@ -513,6 +513,6 @@ The `re` library offers several functions:
 
 ### Quick Iterations
 
-With regular expressions, you might want to try lots of things and fail quickly (over and over, because that is how this works!).
+With regular expression, you might want to try lots of things and fail quickly (over and over, because that is how learning works!).
 
-[regexr.com](https://regexr.com) is a great place to put some sample data into a website and play around with regular expressions
+[regexr.com](https://regexr.com) is a great place to put some sample data into a website and play around with regular expression
