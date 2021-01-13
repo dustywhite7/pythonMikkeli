@@ -62,13 +62,13 @@ In order to establish causality, we need to meet several conditions:
 
 - Think about it like a trend line!
 
-![bg left 80%](regression1.png)
+![bg left 99%](regression1.png)
 
 ---
 
 # Regression analysis
 
-![bg left 80%](regression2.png)
+![bg left 99%](regression2.png)
 
 Whoops! What if there is another variable?
 
@@ -107,7 +107,7 @@ Or lots of variables??
 
 ---
 
-# OLS in Python
+# OLS in Python (with [Statsmodels](https://www.statsmodels.org/stable/index.html))
 
 ```python
 import pandas as pd
