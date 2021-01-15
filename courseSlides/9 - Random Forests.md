@@ -13,17 +13,20 @@ size: 4:3
 
 # Why Ensembles?
 
+
+![](montyPython.jpg)
+
+---
+
+# Why Ensembles?
+
 When we use single learning algorithms, we are very vulnerable to overfitting our model to in-sample variations, which reduces our ability to accurately model out-of-sample.
 
 <br>
 
 Who chose the next Roman emperor? Who chose the next king of France or England?
 
----
-# Why Ensembles?
 
-
-![](montyPython.jpg)
 
 ---
 
@@ -53,7 +56,7 @@ Why?
 
 I had a class of students who averaged 55% on their final exam.
 
-On the other hand, a student who chose the most popular response to each question based on the responses of their classmates would have scored ~85%.
+On the other hand, a student who chose the **most popular response** to each question based on the responses of their classmates would have scored ~85%.
 
 **In aggregate, bad students can find good answers**
 
@@ -107,7 +110,7 @@ Using bagging with decision trees where one variable is clearly the best predict
 ### Random Forests
 
 How can we alleviate this tendency?
-- Restrict the inputs that the tree is allowed to choose from
+- Restrict the variables that the tree is allowed to select
 - Bootstrap the sample
 - Aggregate the forecasts to make a single, more accurate, prediction.
 
@@ -118,7 +121,7 @@ How can we alleviate this tendency?
 When a classification tree looks for maximum information gain, it searches across **all** available inputs.
 
 Trees in a random forest are restricted to a random subset of inputs at each branching:
-- Typically, $\sqrt{k}$ (where $k$ is the number of available parameters) inputs are provided at each branch
+- Typically, $\sqrt{k}$ (where $k$ is the number of available variables) inputs are provided at each branch
 - When a new branch occurs, a new random subset of inputs is provided
 - This is repeated for all branches on all trees
 
@@ -216,6 +219,8 @@ Resulting in:
 
 1. Decision Tree: 65.5%
 2. Random Forest: 68.2%
+
+This is a performance boost USING THE SAME DATA, meaning that we simply switch models and are likely to make better predictions!
 
 ---
 
