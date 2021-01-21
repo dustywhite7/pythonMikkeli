@@ -41,7 +41,10 @@ This means loading lots of unnecessary data, as well as being restricted to (mos
 
 With an API, we can make requests to the server for specific information.
 
-- We can make authenticated requests for **private information** (MUCH harder when scraping)
+- We can make authenticated requests for **private information** 
+  - MUCH harder when scraping, 
+  - Often impossible, and
+  - Typically unethical
 - We don't have to load whole websites
 - We don't have to hunt through HTML for the information we care about.
 
@@ -52,7 +55,7 @@ With an API, we can make requests to the server for specific information.
 - [Quandl Financial Data](www.quandl.com) - Information on many unique financial metrics
 - [Twitter Search](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html) - Track historic trends on a given topic ([realtime](https://developer.twitter.com/en/docs/tweets/filter-realtime/overview))
 - [Sentiment Analysis](https://www.twinword.com/api/emotion-analysis.php) - What is the sentiment in a given block of text?
-- [Sports Updates](https://www.mysportsfeeds.com/) - API to gather data on US sports teams ([Soccer](https://www.api-football.com/))
+- [Sports Updates](https://www.mysportsfeeds.com/) - API to gather data on US sports teams ([Soccer/Football](https://www.api-football.com/))
 - [Mapping Data](https://developers.google.com/maps/documentation/) - Collect information on routes, distances, directions, etc.
 
 
@@ -135,18 +138,17 @@ def fetch_data(url):
     success = False
     while success is False:
         try:
-            response = urllib.request.urlopen(url)
+            response = requests.get(url)
             
-            if response.getcode() == 200:
+            if response.status_code == 200:
                 success = True
-        except e:
-            print(e)
+        except:
             time.sleep(5)
             
             print("Error for URL {0}: {1}".format(
             	url, datetime.datetime.now()))
             print("Retrying")
-    return response.read()
+    return response.text
 ```
 
 ---
@@ -154,20 +156,23 @@ def fetch_data(url):
 # Automating API Requests
 
 ```python
-results = {"timestamp" : [], 
-  "travel_time" : [], 
-  "distance" : []
-  }
-        
-data = json.loads(fetch_data(req_url))
-results['timestamp'].append(
-  datetime.datetime.now())
-results['travel_time'].append(
-  data['rows'][0]['elements'][0]['duration']['value'])
-results['distance'].append(
-  data['rows'][0]['elements'][0]['distance']['value'])
+def get_distance(req_url):
+    results = {"timestamp" : [], 
+      "travel_time" : [], 
+      "distance" : []
+      }
 
-results = pd.DataFrame(results)
+    data = json.loads(fetch_data(req_url))
+    results['timestamp'].append(
+      datetime.datetime.now())
+    results['travel_time'].append(
+      data['rows'][0]['elements'][0]['duration']['value'])
+    results['distance'].append(
+      data['rows'][0]['elements'][0]['distance']['value'])
+
+    results = pd.DataFrame(results)
+    
+    return results
 ```
 
 ---
@@ -262,14 +267,14 @@ At this point, we will (eventually) get a DataFrame of our results when the func
 ---
 # Results
 
-| timestamp | travel_time | distance |
-|:-:|:-:|:-:|:-:|
-2019-04-09 11:37:30.747668 |	1343 |	23942
-2019-04-09 11:38:30.958629 |	1343 |	23942
-2019-04-09 11:39:31.504978 |	1343 |	23942
-2019-04-09 11:40:31.738479 |	1343 |	23942
-2019-04-09 11:41:31.931956 |	1343 |	23942
-... | ... | ...
+|  timestamp                  |  travel_time  |  distance  |
+|-----------------------------|---------------|------------|
+| 2019-04-09 11:37:30.747668  |  1343         |   23942    |
+| 2019-04-09 11:38:30.958629  |  1343         |   23942    |
+| 2019-04-09 11:39:31.504978  |  1343         |   23942    |
+| 2019-04-09 11:40:31.738479  |  1343         |   23942    |
+| 2019-04-09 11:41:31.931956  |  1343         |   23942    |
+| ... | ... | ... |
 
 ---
 

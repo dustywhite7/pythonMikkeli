@@ -62,7 +62,11 @@ In order to create a high-quality model, we need to
 1) Choose the right variables
 2) Choose the right model complexity
 
-Knowing how to do this will take practice! We just need to keep trying to refine our models!
+Knowing how to do this will take practice! We just need to keep trying to refine$^*$ our models!
+
+<br>
+
+$*$ refine does **not** necessarily mean improving accuracy scores
 
 ---
 

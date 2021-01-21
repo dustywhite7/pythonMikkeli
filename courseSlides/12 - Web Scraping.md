@@ -7,7 +7,7 @@ size: 4:3
 ---
 
 # Final Presentations - Friday!
-4-5 minutes, with 2 minutes after for questions
+20-30 minutes per group, with 5 minutes after for questions
 
 ---
 
@@ -101,6 +101,12 @@ The `.text` attribute of each tag will work this way
 
 ---
 
+# Find the Brick Sets
+
+How can we collect information on each lego set in the results?
+
+---
+
 # Find all
 
 Let's find all of the `<article>` tags in the page
@@ -165,13 +171,13 @@ That is ALMOST the price!
 
 # Regex for the win
 
-Remember regular expression? Here is where it will become VERY valuable:
+Remember regular expression? Time for "regex" to shine:
 
 ```py
 import re
 
 re.search(
-    r'(\d+.\d+)(\u20AC)', 
+    r'(\d+.\d+)(\u20AC)', # \u20AC is unicode for Euro
     a[0].find('dt', text="RRP").find_next_sibling().text, 
     re.UNICODE).groups()[0]
 ```
@@ -190,8 +196,9 @@ We got a single price, but now we want to move on, and grab the name and price o
 
 ```py
 data = [] # We will store information here
+          # as a list of lists
 
-for i in a:
+for i in a: # a is our list of article tags
     row = [] # One row per result
     row.append(i.h1.text) # Add the title
     try: # Unless there is an error
@@ -228,6 +235,10 @@ data = pd.DataFrame(data, columns = ['Set', 'Price_Euro'])
 
 ```python
 nextPage = parsed.find('li', class_="next").a['href']
+
+# Find a list item with class of "next"
+#  inside that list item, look for the <a> tag
+#  then grab the "href" value of that <a> tag
 ```
 
 We need to use the characteristics of the "next page" link to consistently identify the link as we walk through each page of search results.
@@ -324,6 +335,8 @@ The code on following slides is also part of the function
 
 ### This is the end of the function!
 
+Also, our function is RECURSIVE!! :star_struck::star_struck:
+
 ---
 
 # Running our function
@@ -331,6 +344,8 @@ The code on following slides is also part of the function
 ```py
 lego2020 = collectLegoSets("https://brickset.com/sets/year-2020")
 ```
+
+![w:500](https://media.tenor.com/images/2028bc734372b11f931568ca25bd1024/tenor.gif)
 
 ---
 
