@@ -62,9 +62,8 @@ In this (very) simple example, we plot some time series data. Our figure is rend
 
 ---
 
-![width:700px](plotly1.png)
+![width:900px](plotly1.png)
 
-In this (very) simple example, we plot some time series data. Our figure is rendered in the notebook.
 
 ---
 
@@ -76,8 +75,8 @@ Let's add some formatting. First, we can change the axis labels and title to mat
 px.scatter(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Fish Length', # key should match original label
-        'y' : "Fish Weight" # value should be new label value
+        'Length1' : 'Fish Length', # key should match original label
+        'Weight' : "Fish Weight" # value should be new label value
     })
 ```
 
@@ -96,8 +95,8 @@ Next, we can add a regression trendline:
 px.scatter(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Fish Length', # key should match original label
-        'y' : "Fish Weight" # value should be new label value
+        'Length1' : 'Fish Length', # key should match original label
+        'Weight' : "Fish Weight" # value should be new label value
     },
     trendline = 'ols' # add a linear trendline
 )
@@ -117,14 +116,12 @@ We can also use `lowess` trendlines!
 We could instead use line charts
 
 ```python
-px.line(# initialize line object
-    data, x='Length1', y='Weight',
+px.line(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Fish Length', # key should match original label
-        'y' : "Fish Weight" # value should be new label value
-    }
-    )
+        'Length1' : 'Fish Length', # key should match original label
+        'Weight' : "Fish Weight" # value should be new label value
+    })
 ```
 
 ---
@@ -144,8 +141,8 @@ Let's mark multiple series by separating our observations by fish species:
 px.scatter(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
-        'x' : 'Fish Length', # key should match original label
-        'y' : "Fish Weight" # value should be new label value
+        'Length1' : 'Fish Length', # key should match original label
+        'Weight' : "Fish Weight" # value should be new label value
     },
     trendline = 'ols', # add a linear trendline,
     color = 'Species'
@@ -241,11 +238,11 @@ data['datetime'] = pd.to_datetime(data['datetime'])
 data['weekday'] = data['datetime'].dt.dayofweek
 data['hour'] = data['datetime'].dt.hour
 data = data.groupby(['weekday', 'hour'])['TEMP'].mean()
-data = data.values.reshape((24,7))
+data = data.values.reshape((7,24))
 
 px.imshow(data, title="Temperature in Beijing" ,
-          labels=dict(x="Day of Week", y="Time of Day"), 
-          x=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+          labels=dict(y="Day of Week", x="Time of Day"), 
+          y=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
 ```
 
 ---
