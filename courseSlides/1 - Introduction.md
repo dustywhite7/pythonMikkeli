@@ -37,12 +37,12 @@ A quick tour
 ---
 
 # Github
-All the files - [https://github.com/dustywhite7/pythonMikkeli](https://github.com/dustywhite7/pythonMikkeli)
+All the other files - [https://github.com/dustywhite7/pythonMikkeli](https://github.com/dustywhite7/pythonMikkeli)
 
 ---
 
-# Mimir
-Your workspace
+# PyCharm Edu
+Your workspace. We will learn more as we go through class!
 
 ---
 
@@ -63,15 +63,15 @@ Your workspace
 
 # Getting Started in Python
 
-- Open a Mimir Notebook
-	- Mimir allows us to execute code on a remote server, processing the code on more powerful machines
+- Open PyCharm, and let's explore
+	- PyCharm is called an IDE, or Integrated Development Environment, and contains all the tools we will need to work with Python (and to help this class go smoothly!)
 - Let's write some Python!
 
 ---
 
 # A simple program in Python
 
-Copy this program into a cell in your notebook:
+Copy this program into your Python interpreter (follow my lead):
 
 ```python
 import numpy as np
@@ -478,7 +478,7 @@ Learning to read documentation is a critical component of becoming a programmer,
 
 # For Lab Today
 
-Complete the **Solve it** exercises in the Mimir notebook!
+Complete the **Solve it** exercises in PyCharm!
 - Experiment! The more you try different things, the quicker you will learn.
 - You WILL break things!
 - You CANNOT learn to program by just attending lecture!
