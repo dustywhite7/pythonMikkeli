@@ -174,7 +174,7 @@ Core types are the base types that everything else in Python will be built upon:
 **Not so common**
 
 3. Complex numbers  
-4. Rational numberss
+4. Irrational numbers
 
 ---
 

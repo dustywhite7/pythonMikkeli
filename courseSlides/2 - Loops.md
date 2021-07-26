@@ -31,7 +31,7 @@ otherwise
 
 `bool` objects allow us to decide which conditions are or are not met
 - Each condition is evaluated as `True` or `False`
-- These are the basis for which branch in our logic should be followed
+- These are the basis for determining which branch in our logic should be followed
 
 ---
 
@@ -203,4 +203,4 @@ Is the line ```x+=1``` necessary? Discuss with your neighbor.
 
 # Lab Time!
 
-Complete the **Solve it!** problems in Mimir
+Complete the problems in PyCharm! :smiley:
