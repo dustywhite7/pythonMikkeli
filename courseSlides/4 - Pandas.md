@@ -52,7 +52,7 @@ Create an empty Data Frame:
 data = pd.DataFrame()
 ```
 
-A Data Frame is a class that accepts the following parameters:
+A Data Frame is an object that accepts the following:
 - `data` (optional - can be list of lists, or dictionary)
 - `index` (optional - for referencing individual rows)
 - `columns` (optional - so you can name your variables)
@@ -89,13 +89,13 @@ To access a list of all of the column names in your Data Frame:
 data.columns
 ```
 
-To reference a single column:
+To extract a single column:
 
 ```python
 data['Column_Name']
 ```
 
-To reference several columns, pass a list of column names:
+To extract several columns, pass a list of column names:
 ```python
 data[['Column1','Column2']]
 ```
@@ -155,7 +155,11 @@ We can quickly transform the data in a given column using the slicing techniques
 ```python
 # Log the values of a variable
 data.loc[:,'Column1'] = np.log(data['Column1'])
+```
 
+We can even create new columns on the fly!
+
+```python
 # Difference two variables
 data['newColumn'] = data['Column1'] - data['Column2']
 # Because the variable doesn't exist yet, we don't use
@@ -179,13 +183,13 @@ Or, we can establish a multi-level index by passing a list of columns:
 data.set_index(['year', 'month', 'day'])
 ```
 
-Remember! Indices should be unique values!
+Remember: Indices should be unique values!
 
 ---
 
 # Transforming our Data
 
-Processing Datetimes is also easy with built-in Pandas functionality:
+Processing Datetimes is also easy using built-in Pandas functions:
 
 ```python
 data['myDate'] = pd.to_datetime(data['stringDateColumn'],
@@ -231,7 +235,7 @@ data['Column'].fillna(method='pad') # fill values forward
 
 # Cleaning Data
 
-You can also just drop observations with missing values if needed:
+You can also just drop observations with missing values if that is preferable:
 
 ```py
 data.dropna(inplace=True)
@@ -242,13 +246,13 @@ data.dropna(inplace=True)
 
 # Generating Summary Statistics
 
-Using the `describe` funtion to create summary tables easily, and can even export them to csv for use in reports.
+We use the `describe` funtion to create summary tables easily, and can even export them to csv for use in reports.
 
 ```python
 data.describe()
 ```
 
-If we want the table presented similar to academic journal formats, we can add a few arguments:
+If we want the table presented similar to academic journal formats, we can make a few tweaks:
 
 ```python
 data.describe().T[['count','mean','std','min','max']]
@@ -277,6 +281,10 @@ The first thing we need to do is to establish a connection to our database:
 import sqlite3
 engine = sqlite3.connect('exampleDatabase.db')
 ```
+
+<br>
+
+*Note: be sure to change this code to point toward the `exampleDatabase.db` file on your own computer!*
 
 ---
 
@@ -321,6 +329,7 @@ If it isn't installed, you can install the library by running
 ```bash
 pip install pandasql
 ```
+Or by using the install function within PyCharm
 
 ---
 
@@ -332,7 +341,7 @@ pip install pandasql
 edited_data = pysqldf(select_statement_here)
 ```
 
-Using SQLite syntax, we can then clean any dataset using the same tools that we would to extract data from a database!
+Using SQLite syntax, we can then clean any dataset using the same syntax that we would to extract data from a database!
 
 We can aggregate, create new columns, group, and join across datasets, just like we would with SQL.
 
@@ -342,6 +351,9 @@ We can aggregate, create new columns, group, and join across datasets, just like
 In order to perform functions across an entire column, we can take advantage of the built in `map` method for pandas Series objects:
 
 ```python
+data = pd.read_csv("https://github.com/dustywhite7/
+pythonMikkeli/raw/master/exampleData/footballAttendance.csv")
+
 data['Average Attendance'] = data['Average Attendance'].map(lambda x: x*1000)
 ```
 
