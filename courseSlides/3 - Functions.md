@@ -47,7 +47,7 @@ Let's focus on one part of that code snippet
 
 # Why Use Functions?
 
-In Python (and most languages), we can just write code as a sequence of commands, and everything will be fine.
+In Python (and most languages), we can just write code as a sequence of commands, and everything works just fine.
 
 ```python
 import numpy as np
@@ -191,7 +191,7 @@ $$2! = 2 \times 1$$
 $$3! = 3\times 2 \times 1 $$
 $$n! = n\times n-1 \times n-2 \times ... \times 1$$
 
-How can we write a function to determine an arbitrary Fibonacci number?
+How can we write a function to determine an arbitrary Factorial?
 
 
 ---
@@ -215,3 +215,7 @@ This function is **recursive** because it calls *itself* in order to complete it
 # Functions are the backbone of programming
 
 We will use functions EVERY DAY as programmers, and they will save us a LOT of time as we move through more advanced topics.
+
+---
+
+# Lab Time!
