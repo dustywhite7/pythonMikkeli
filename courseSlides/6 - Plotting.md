@@ -15,8 +15,7 @@ size: 4:3
 Plotly is a good choice for several reasons:
 
 - It allows for easy interactive plotting
-- Interactive plots can be embedded in notebooks
-- Can be run on a server
+- Interactive plots can be embedded in notebooks/websites
 - Plotly has developed a dashboard API to complement their plotting library (similar to Shiny for R)
 - It also has a shorthand library [`plotly_express`](https://plotly.express) for rapid exploration
 
@@ -43,7 +42,8 @@ Let's import a `pandas` Data Frame to play with some :fish: data:
 import pandas as pd
 
 data = pd.read_csv(
-    "https://github.com/dustywhite7/pythonMikkeli/raw/master/exampleData/fishWeight.csv")
+    "https://github.com/dustywhite7/pythonMikkeli/raw/
+    master/exampleData/fishWeight.csv")
 ```
 
 
@@ -53,7 +53,8 @@ data = pd.read_csv(
 # Creating Plot Objects
 
 ```python
-px.scatter(data, x='Length1', y='Weight')
+fig = px.scatter(data, x='Length1', y='Weight')
+fig.show()
 ```
 
 <br>
@@ -72,12 +73,13 @@ In this (very) simple example, we plot some time series data. Our figure is rend
 Let's add some formatting. First, we can change the axis labels and title to match :
 
 ```python
-px.scatter(data, x='Length1', y='Weight',
+fig = px.scatter(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
         'Length1' : 'Fish Length', # key should match original label
         'Weight' : "Fish Weight" # value should be new label value
     })
+fig.show()
 ```
 
 ---
@@ -92,7 +94,7 @@ px.scatter(data, x='Length1', y='Weight',
 Next, we can add a regression trendline:
 
 ```python
-px.scatter(data, x='Length1', y='Weight',
+fig = px.scatter(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
         'Length1' : 'Fish Length', # key should match original label
@@ -100,6 +102,7 @@ px.scatter(data, x='Length1', y='Weight',
     },
     trendline = 'ols' # add a linear trendline
 )
+fig.show()
 ```
 
 We can also use `lowess` trendlines!
@@ -116,12 +119,13 @@ We can also use `lowess` trendlines!
 We could instead use line charts
 
 ```python
-px.line(data, x='Length1', y='Weight',
+fig = px.line(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
         'Length1' : 'Fish Length', # key should match original label
         'Weight' : "Fish Weight" # value should be new label value
     })
+fig.show()
 ```
 
 ---
@@ -138,7 +142,7 @@ px.line(data, x='Length1', y='Weight',
 Let's mark multiple series by separating our observations by fish species:
 
 ```python
-px.scatter(data, x='Length1', y='Weight',
+fig = px.scatter(data, x='Length1', y='Weight',
     title = "Fish Length vs Weight", # update the title of the figure
     labels = { # dictionary for axis labels
         'Length1' : 'Fish Length', # key should match original label
@@ -147,7 +151,7 @@ px.scatter(data, x='Length1', y='Weight',
     trendline = 'ols', # add a linear trendline,
     color = 'Species'
 )
-
+fig.show()
 ```
 
 ---
@@ -184,7 +188,8 @@ among many others.
 First, we can make a bar chart:
 
 ```python
-px.bar(data, y="Weight", color="Species")
+fig = px.bar(data, y="Weight", color="Species")
+fig.show()
 ```
 
 
@@ -200,11 +205,12 @@ px.bar(data, y="Weight", color="Species")
 Maybe that data would do better if we could aggregate it in bins to better understand how many fish were observed in each weight bin:
 
 ```python
-px.histogram(data, 
+fig = px.histogram(data, 
         x="Weight", 
         marginal="rug", 
         color="Species",  
         color_discrete_sequence=px.colors.qualitative.Prism)
+fig.show()
 ```
 
 ---
@@ -217,7 +223,8 @@ px.histogram(data,
 
 
 ```python
-px.box(data, y="Weight", color="Species")
+fig = px.box(data, y="Weight", color="Species")
+fig.show()
 ```
 
 ---
@@ -240,9 +247,10 @@ data['hour'] = data['datetime'].dt.hour
 data = data.groupby(['weekday', 'hour'])['TEMP'].mean()
 data = data.values.reshape((7,24))
 
-px.imshow(data, title="Temperature in Beijing" ,
+fig = px.imshow(data, title="Temperature in Beijing" ,
           labels=dict(y="Day of Week", x="Time of Day"), 
           y=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
+fig.show()
 ```
 
 ---
@@ -257,10 +265,11 @@ px.imshow(data, title="Temperature in Beijing" ,
 data = pd.read_csv(
   "https://raw.githubusercontent.com/dustywhite7/Econ8320/master/LabCode/corruption2018.csv")
 
-px.choropleth(data, locations = 'Abbr',
+fig = px.choropleth(data, locations = 'Abbr',
     color = 'Index',
     hover_name= "Name"
     )
+fig.show()
 ```
 
 Map data from the [INFORM Index](http://www.inform-index.org/Results/Global)
@@ -290,11 +299,12 @@ Here is a link to the [full documentation](https://plot.ly/python/reference/#lay
 # Choropleth Maps - Projection
 
 ```python
-px.choropleth(data, locations = 'Abbr',
+fig = px.choropleth(data, locations = 'Abbr',
     color = 'Index',
     hover_name= "Name",
     projection = "orthographic"
     )
+fig.show()
 ```
 
 ---
@@ -308,11 +318,12 @@ px.choropleth(data, locations = 'Abbr',
 # Choropleth Maps - Scope
 
 ```python
-px.choropleth(data, locations = 'Abbr',
+fig = px.choropleth(data, locations = 'Abbr',
     color = 'Index',
     hover_name= "Name",
     scope = "europe"
     )
+fig.show()
 ```
 
 
@@ -330,9 +341,10 @@ px.choropleth(data, locations = 'Abbr',
 data = pd.read_csv(
   "https://raw.githubusercontent.com/dustywhite7/Econ8320/master/LabCode/displaced2018.csv")
 
-px.scatter_geo(data, locations="Abbr", 
+fig = px.scatter_geo(data, locations="Abbr", 
                      hover_name="Name", size="Displaced",
                      projection="natural earth")
+fig.show()
 ```
 
 ---
