@@ -12,13 +12,13 @@ size: 4:3
 
 # Cause and Effect
 
-[Correlation](http://www.tylervigen.com/spurious-correlations): Two variables are correlated when changes in one variable occur in a pattern corresponding to changes in the other.
+**[Correlation](http://www.tylervigen.com/spurious-correlations)**: Two variables are correlated when changes in one variable occur in a pattern corresponding to changes in the other.
 
 ---
 
 # Cause and Effect
 
-Causation: One variable moves, and the second variable changes because of the movement of the first.
+**Causation**: One variable moves, and the second variable changes because of the movement of the first.
 
 ![](correlation.png)
 
@@ -167,7 +167,7 @@ Here, we square `x2`
 
 OLS is an inappropriate model whenever you have a binary or discrete dependent variable (think "yes" or "no" questions)
 
-In this case, you should use Logistic Regression instead. More details can be found in the class notes on Mimir/Github.
+In this case, you should use Logistic Regression instead. More details can be found in the class notes in PyCharm/Github.
 
 ---
 
