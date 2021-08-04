@@ -30,7 +30,7 @@ Who chose the next Roman emperor? Who chose the next king of France or England?
 
 ---
 
-### Why Ensembles?
+# Why Ensembles?
 
 Who chose the next Roman emperor? Who chose the next king of France or England?
 - The current emperor or king (mostly)
@@ -41,7 +41,7 @@ Why is this a bad idea?
 
 ---
 
-### Why Ensembles?
+# Why Ensembles?
 
 How do most developed countries now choose leaders?
 - They vote!
@@ -52,7 +52,7 @@ Why?
 
 ---
 
-### Why Ensembles?
+# Why Ensembles?
 
 I had a class of students who averaged 55% on their final exam.
 
@@ -63,7 +63,7 @@ On the other hand, a student who chose the **most popular response** to each que
 
 ---
 
-### Why Ensembles?
+# Why Ensembles?
 
 <br>
 
@@ -73,7 +73,7 @@ Collections of learning algorithms are called **ensembles**.
 
 ---
 
-### Bagging
+# Bagging
 
 Bagging (**B**ootstrap **Agg**regation) is a simple way to start creating an ensemble model.
 
@@ -87,7 +87,7 @@ All training data is used to generate our best estimate of the true functional f
 
 ---
 
-### Tree Problems
+# Tree Problems
 
 One drawback to bagging can be illustrated by thinking about how decision trees are generated.
 1. Find the biggest information gain
@@ -98,7 +98,7 @@ One drawback to bagging can be illustrated by thinking about how decision trees 
 
 ---
 
-### Random Forests
+# Random Forests
 
 Using bagging with decision trees where one variable is clearly the best predictor, the data will never allow a model to explore other inputs.
 - The most informative input will mask the other options (always be chosen)
@@ -107,7 +107,7 @@ Using bagging with decision trees where one variable is clearly the best predict
 
 ---
 
-### Random Forests
+# Random Forests
 
 How can we alleviate this tendency?
 - Restrict the variables that the tree is allowed to select
@@ -116,7 +116,7 @@ How can we alleviate this tendency?
 
 ---
 
-### Restricting Inputs
+# Restricting Inputs
 
 When a classification tree looks for maximum information gain, it searches across **all** available inputs.
 
@@ -127,7 +127,7 @@ Trees in a random forest are restricted to a random subset of inputs at each bra
 
 ---
 
-### Making a Classification
+# Making a Classification
 
 Once each tree in a random forest has been grown, we can use the trees to create a decision rule based on a vote by the classifiers:
 - Each tree classifies an observation
@@ -136,9 +136,9 @@ Once each tree in a random forest has been grown, we can use the trees to create
 
 ---
 
-### Implementing Ensembles
+# Implementing Ensembles
 
-We will implement Random Forests, Bagging, and Boosting using the ```scikit-learn``` module in Python, as we did for Decision Trees
+We will implement Random Forests (Bagging and Boosting are other tree-based ensemble methods, but we will just focus on a single model) using the ```scikit-learn``` module in Python, as we did for Decision Trees
 
 ```python
 import pandas as pd
@@ -149,14 +149,15 @@ from sklearn.metrics import accuracy_score
 
 ---
 
-### Prepare the Data
+# Prepare the Data
 
 <br>
 
 ```python
 # Read the handwriting MNIST dataset
 data = pd.read_csv(
-	'https://github.com/dustywhite7/pythonMikkeli/raw/master/exampleData/passFailTrain.csv')
+	'https://github.com/dustywhite7/pythonMikkeli/raw/'
+	+'master/exampleData/passFailTrain.csv')
 
 # Separate the labels from the inputs
 Y = data['G3']
@@ -169,7 +170,7 @@ x, xt, y, yt = train_test_split(X, Y, test_size = 0.9,
 
 ---
 
-### Baseline Decision Tree Classifier
+# Baseline Decision Tree Classifier
 
 
 ```python
@@ -192,7 +193,7 @@ Resulting in:
 
 ---
 
-### Random Forest Classifier
+# Random Forest Classifier
 
 
 ```python
@@ -225,7 +226,7 @@ This is a performance boost USING THE SAME DATA, meaning that we simply switch m
 ---
 
 
-### MNIST Dataset
+# MNIST Dataset
 
 [MNIST Handwriting Recognition Data](http://yann.lecun.com/exdb/mnist/) 
 - Contains digits 0-9
