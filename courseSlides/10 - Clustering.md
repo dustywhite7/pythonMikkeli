@@ -12,9 +12,11 @@ size: 4:3
 
 # Unsupervised Learning
 
-- Used for recommended movies on Netflix, or suggested purchases on Amazon, where we don’t have a clear fix on what exactly we (as analysts) are looking for
-- **Any case where we seek to group observations by deciding which are most closely related to one another based on the data inputs**
-    - There is not necessarily a "true" value or "right" answer in unsupervised learning
+- Movie recommendations on Netflix
+- Suggested purchases on Amazon
+
+Used where we don’t have a clear fix on what exactly we (as analysts) are looking for
+- There is not necessarily a "true" value or "right" answer in unsupervised learning
 
 
 ---
@@ -41,7 +43,7 @@ size: 4:3
 # Heirarchical Clustering
 
 - **Heirarchy** - organizing a group from highest to lowest in some measureable trait
-- In our case, it will be similarity to other observations
+- We will use similarity to other observations
 
 ---
 
@@ -114,8 +116,6 @@ AgglomerativeClustering(
 import plotly.figure_factory as ff
 import plotly.offline as py
 
-py.init_notebook_mode(connected=True)
-
 # Create the dendrogram
 fig = ff.create_dendrogram(x, orientation = 'bottom')
 
@@ -127,7 +127,7 @@ fig.layout.width=1000
 fig.layout.height=600
 
 # Plot the figure
-py.iplot(fig)
+fig.show()
 ```
 
 ---
