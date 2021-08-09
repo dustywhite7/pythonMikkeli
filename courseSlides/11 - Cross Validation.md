@@ -43,6 +43,10 @@ Remember this??
 
 ---
 
+# Thought Exercise: How similar are twins, really?
+
+---
+
 # How to Overfit - Model Complexity
 
 We can also overfit a model by choosing a model of high complexity
@@ -50,6 +54,8 @@ We can also overfit a model by choosing a model of high complexity
 - Remember that not all variation can be modeled, and we may have to accept some inaccuracy in a realistic model of the world
 
 ---
+
+# Which model is better? Blue or black?
 
 ![w:600](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Overfitted_Data.png/300px-Overfitted_Data.png)
 
@@ -125,7 +131,8 @@ from sklearn.tree import DecisionTreeClassifier as dt
 from sklearn.metrics import accuracy_score
 
 mnist = pd.read_csv(
-    "https://github.com/dustywhite7/pythonMikkeli/blob/master/exampleData/mnistTrain.csv?raw=true")
+    "https://github.com/dustywhite7/pythonMikkeli/blob/"
+    +"master/exampleData/mnistTrain.csv?raw=true")
 
 # Separate our features from our labels
 y = mnist['Label']
@@ -207,8 +214,9 @@ Accuracy Standard Deviation: 1.0%
 
 Once your cross-validation demonstrates that you have minimized overfitting, it's time to retrain your model
 - We dont USE our cross-fitting models
-- Instead, retrain the model on the ENTIRE dataset
+- Instead, retrain the model on the ENTIRE training dataset
 - This maximizes the information your model can use to predict future observations
+- Now it is time to use the testing data that you reserved from the original data set to evaluate performance!
 
 ---
 
