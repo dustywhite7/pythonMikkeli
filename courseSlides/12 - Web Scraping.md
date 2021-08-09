@@ -7,7 +7,7 @@ size: 4:3
 ---
 
 # Final Presentations - Friday!
-20-30 minutes per group, with 5 minutes after for questions
+5 minutes per person, with 1-2 minutes after for questions
 
 ---
 
@@ -18,10 +18,10 @@ size: 4:3
 
 # Data Collection
 
-Collecting data from webistes is a **drag**
+Collecting data from webistes is a **drag** (hasn't it been a mess cleaning data for your project?!)
 
 What if we could automate it?
-- We can do exactly that with web scraping!
+- We can with web scraping!
 
 ---
 
