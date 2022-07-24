@@ -13,21 +13,21 @@ Welcome to class!
 
 # Introductions
 
-Dustin White, PhD (Economics)
+Dusty White, PhD (Economics)
 University of Nebraska at Omaha
 
 ---
 
 # Introductions
 
-Data Science is my passion, and I use it with Economics to
+Data is my passion, and I use combined with Economics to
 - Study risky/dangerous behaviors
 - Explore the relationship between remote work and pay
 - Learn about strategic choices in sports
 
 ---
 
-# What do you want to get out of this class?
+# What do YOU want to get out of this class?
 
 ---
 
@@ -37,12 +37,16 @@ A quick tour
 ---
 
 # Github
-All the other files - [https://github.com/dustywhite7/pythonMikkeli](https://github.com/dustywhite7/pythonMikkeli)
+All the other files (the majority of the content) - [https://github.com/dustywhite7/pythonMikkeli](https://github.com/dustywhite7/pythonMikkeli)
 
 ---
 
 # PyCharm Edu
 Your workspace. We will learn more as we go through class!
+- Install
+- Load the [zip file](https://github.com/dustywhite7/pythonMikkeli/raw/master/pycharm_course/Tools_for_Data_Analysis.zip) into PyCharm as a course
+	- I'll show you how
+- Read the lessons, and do the practice problems!
 
 ---
 
@@ -471,7 +475,7 @@ Learning to read documentation is a critical component of becoming a programmer,
 
 - Take your time
 - Follow this [link](http://lmgtfy.com/?q=random+integer+python) (Google is your friend!)
-- Don't Panic! 
+- REMEMBER: **Don't Panic!** 
 
 
 ---
