@@ -6,6 +6,15 @@ class: default
 size: 4:3
 ---
 
+# Homework Review!
+
+Let's work through 
+- the "odds and evens" problem
+- the string formatting exercise
+
+---
+
+
 # Conditions and Loops
 
 ---
