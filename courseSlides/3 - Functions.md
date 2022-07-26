@@ -6,6 +6,10 @@ class: default
 size: 4:3
 ---
 
+# Questions about the homework? :thinking:
+
+---
+
 # Functions in Python
 
 ---
@@ -47,7 +51,7 @@ Let's focus on one part of that code snippet
 
 # Why Use Functions?
 
-In Python (and most languages), we can just write code as a sequence of commands, and everything works just fine.
+In Python (and most languages), we can write code as a sequence of commands, and everything works just fine.
 
 ```python
 import numpy as np
@@ -63,7 +67,7 @@ dist+=np.abs(myCoord1[2]-myCoord2[2])
 
 ---
 
-# Why Use Functions?
+# Then Why Use Functions?
 
 What might go wrong with the code on the previous slide?
 - What if I want to use a new set of coordinates with 4 dimensions?
@@ -89,7 +93,7 @@ What might go wrong with the code on the previous slide?
 
 # Starting to Write Functions
 
-```
+```py
 def myFunction(arguments_go_here):
 ```
 
@@ -105,7 +109,7 @@ Later, after we have completed the code that runs inside of the function, we wri
 
 # Arguments, Scope
 
-**Arguments** are **variables** that we provide to our function. These variables receive special names (assigned by us), so that our function will work, no matter what specific variables we provide to them.
+**Arguments** are **variables** that we provide to our function. These variables receive special names (assigned by us), so that our function will work, no matter what specific variables or values we provide to them.
 
 Arguments to a function are **local** in scope, meaning that these special function names **do not exist outside of our function**
 
@@ -141,6 +145,8 @@ Write a function that ONLY utilizes your ```product``` function to calculate the
 - What is the result of ```areaCircle(2.71828)```?
 - What is the result of ```areaCircle("Howdy!")```?
 
+(You can use `3.141593` as an approximation of pi)
+
 
 ---
 
@@ -169,7 +175,7 @@ def areaCircle(r):
 <br>
 
 - We can use functions inside of functions
-- Use small functions to build part of a whole
+- Use small functions to build components of a larger function
 - We can even use functions **recursively**
 
 ---
