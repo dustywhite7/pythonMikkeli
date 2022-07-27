@@ -6,6 +6,11 @@ class: default
 size: 4:3
 ---
 
+# What kind of data do you find interesting? :book: :computer:
+
+Help me pick my example for today!
+
+---
 
 # Pandas, SQL, and Data Frames
 
