@@ -438,7 +438,7 @@ re.search(r'((\b\w+\b)+(\s)?){1,3}, ([A-Z]{2})', mystring)
 2) "1600 Pennsylvania Ave NW, Washington, DC 20006"
 3) "261 S 800 E\nSalt Lake City, UT 84102"
 
-This code assumes that a city name will not consist of more than 3 words. (Dangerous assumption)
+This possible answer assumes that a city name will not consist of more than 3 words. (Dangerous assumption)
 
 ---
 
