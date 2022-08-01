@@ -54,7 +54,7 @@ data = pd.read_csv(
 
 ```python
 fig = px.scatter(data, x='Length1', y='Weight')
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 <br>
@@ -79,7 +79,7 @@ fig = px.scatter(data, x='Length1', y='Weight',
         'Length1' : 'Fish Length', # key should match original label
         'Weight' : "Fish Weight" # value should be new label value
     })
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
@@ -102,7 +102,7 @@ fig = px.scatter(data, x='Length1', y='Weight',
     },
     trendline = 'ols' # add a linear trendline
 )
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 We can also use `lowess` trendlines!
@@ -125,7 +125,7 @@ fig = px.line(data, x='Length1', y='Weight',
         'Length1' : 'Fish Length', # key should match original label
         'Weight' : "Fish Weight" # value should be new label value
     })
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
@@ -151,7 +151,7 @@ fig = px.scatter(data, x='Length1', y='Weight',
     trendline = 'ols', # add a linear trendline,
     color = 'Species'
 )
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
@@ -189,7 +189,7 @@ First, we can make a bar chart:
 
 ```python
 fig = px.bar(data, y="Weight", color="Species")
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 
@@ -210,7 +210,7 @@ fig = px.histogram(data,
         marginal="rug", 
         color="Species",  
         color_discrete_sequence=px.colors.qualitative.Prism)
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
@@ -224,7 +224,7 @@ fig.show()
 
 ```python
 fig = px.box(data, y="Weight", color="Species")
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
@@ -250,7 +250,7 @@ data = data.values.reshape((7,24))
 fig = px.imshow(data, title="Temperature in Beijing" ,
           labels=dict(y="Day of Week", x="Time of Day"), 
           y=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
@@ -269,7 +269,7 @@ fig = px.choropleth(data, locations = 'Abbr',
     color = 'Index',
     hover_name= "Name"
     )
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 Map data from the [INFORM Index](http://www.inform-index.org/Results/Global)
@@ -304,7 +304,7 @@ fig = px.choropleth(data, locations = 'Abbr',
     hover_name= "Name",
     projection = "orthographic"
     )
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
@@ -323,7 +323,7 @@ fig = px.choropleth(data, locations = 'Abbr',
     hover_name= "Name",
     scope = "europe"
     )
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 
@@ -344,7 +344,7 @@ data = pd.read_csv(
 fig = px.scatter_geo(data, locations="Abbr", 
                      hover_name="Name", size="Displaced",
                      projection="natural earth")
-fig.show()
+fig.show() # or fig.write_html('figure.html')
 ```
 
 ---
