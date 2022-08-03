@@ -47,7 +47,7 @@ How do most developed countries now choose leaders?
 - They vote!
 
 Why?
-- NOT because we care if everyone has their opinion heard (see history of voting rights for supporting evidence)
+- NOT because they care if everyone has their opinion heard (see history of voting rights for supporting evidence)
 - Because large groups of people, when their opinions are averaged, make ~~good~~ better choices
 
 ---
