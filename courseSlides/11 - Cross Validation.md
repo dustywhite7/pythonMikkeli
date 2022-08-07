@@ -13,7 +13,7 @@ size: 4:3
 
 # Review of Overfitting
 
-How good should we make our model?
+How "good" should we make our model?
 
 ---
 
@@ -37,13 +37,13 @@ We can overfit by including variables in our data that *seem* relevant to the pr
 
 ---
 
-![](https://www.cookandbynum.com/wp-content/uploads/2018/11/per-capital-cheese.png)
+![](chart.png)
 
-Remember this??
+## Remember this??
 
 ---
 
-# Thought Exercise: How similar are twins, really?
+# Thought Exercise: How similar are identical twins, really?
 
 ---
 
@@ -108,7 +108,7 @@ $*$ refine does **not** necessarily mean improving accuracy scores
 
 Using cross-validation
 - I might see that the accuracy of one split is very different from the accuracy of another split
-- This reveals overfitting!
+    - This reveals overfitting!
 - It also provides more realistic expectations for the performance of a model than we might otherwise have.
 
 ---
@@ -213,8 +213,8 @@ Accuracy Standard Deviation: 1.0%
 # After Cross-Validation
 
 Once your cross-validation demonstrates that you have minimized overfitting, it's time to retrain your model
-- We dont USE our cross-fitting models
-- Instead, retrain the model on the ENTIRE training dataset
+- **We dont USE our cross-validation models**
+    - Retrain the model on the ENTIRE training dataset
 - This maximizes the information your model can use to predict future observations
 - Now it is time to use the testing data that you reserved from the original data set to evaluate performance!
 
