@@ -6,11 +6,6 @@ class: default
 size: 4:3
 ---
 
-# Final Presentations - Friday!
-5 minutes per person, with 1-2 minutes after for questions
-
----
-
 
 # Web Scraping
 
@@ -21,7 +16,7 @@ size: 4:3
 Collecting data from webistes is a **drag** (hasn't it been a mess cleaning data for your project?!)
 
 What if we could automate it?
-- We can with web scraping!
+- We often can with web scraping!
 
 ---
 
