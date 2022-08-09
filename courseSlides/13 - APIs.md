@@ -117,14 +117,14 @@ The response provided when accessing that URL gives us the information that we r
 # Automating API Requests
 
 ```python
-import urllib
+import requests
 import json
 import time
 import datetime
 import pandas as pd
 ```
 
-- `urllib` enables Python to process url requests (kind of like `requests`)
+- `requests` enables Python to process url requests
 - `json` provides native JSON handling
 - `time` helps us to check the system clock
 - `datetime` provides the ability to parse dates and times
