@@ -50,6 +50,15 @@ Your workspace. We will learn more as we go through class!
 
 ---
 
+# OR Google Colab
+Your alternate workspace (although honestly I think you might all prefer it...).
+- Install
+- Download the notebooks from [github](https://github.com/dustywhite7/pythonMikkeli) and upload into Google Drive, so that you can launch them in Colab
+	- I'll show you how
+- Same lessons, same practice problems!
+
+---
+
 # Let's get started!
 
 ---
@@ -58,7 +67,7 @@ Your workspace. We will learn more as we go through class!
 
 - A dynamically typed language
 - High-level
-- Widely adopted in data analysis
+- Widely adopted in data science
 - **General-purpose** language!
 	- This means that we can use it for anything, not just for data analysis
 - Emphasizes readability (you'll see what I mean)
@@ -67,8 +76,9 @@ Your workspace. We will learn more as we go through class!
 
 # Getting Started in Python
 
-- Open PyCharm, and let's explore
+- Open PyCharm or Colab, and let's explore
 	- PyCharm is called an IDE, or Integrated Development Environment, and contains all the tools we will need to work with Python (and to help this class go smoothly!)
+	- Colab is a notebook environment, and is very popular for preliminary analysis and for use among data scientists.
 - Let's write some Python!
 
 ---
@@ -154,7 +164,7 @@ For loops allow us to repeat code multiple times with minor variations, so that 
 
 Every piece of code that we write will contain **logical statements** that allow the computer to perform tasks that we describe
 
-- The computer/Python will only be as careful as our code!
+- **The computer/Python will only be as careful as our code!**
 
 ---
 
@@ -462,10 +472,10 @@ This is a LOT of information! Fortunately, we have **DOCUMENTATION** to help us 
 
 # Reading Documentation
 
-To get started, let's look at the [Numpy Random Sampling Documentation](https://docs.scipy.org/doc/numpy/reference/routines.random.html)
+To get started, let's look at the [Numpy Random Sampling Documentation](https://numpy.org/doc/stable/reference/random/generator.html)
 
 
-Keep in mind, [StackOverflow](stackoverflow.com) is a great website to help us figure out what to do when we have an error.
+Keep in mind, [StackOverflow](https://stackoverflow.com) is a great website to help us figure out what to do when we have an error.
 
 ---
 
@@ -474,7 +484,7 @@ Keep in mind, [StackOverflow](stackoverflow.com) is a great website to help us f
 Learning to read documentation is a critical component of becoming a programmer, or using programming for pretty much any purpose.
 
 - Take your time
-- Follow this [link](http://lmgtfy.com/?q=random+integer+python) (Google is your friend!)
+- Follow this [link](https://www.google.com/search?q=random+numbers+numpy&sxsrf=AB5stBh08TkS4_0XhdP2Iwhi1mnoAG2clg%3A1690136875297&source=hp&ei=K3G9ZLCJEOXAxc8P2qSr8AU&iflsig=AD69kcEAAAAAZL1_O8CnWPQFx9uubx3xxD4EAJTElX4-&ved=0ahUKEwjwysnAuqWAAxVlYPEDHVrSCl4Q4dUDCAg&uact=5&oq=random+numbers+numpy&gs_lp=Egdnd3Mtd2l6IhRyYW5kb20gbnVtYmVycyBudW1weTIIEAAYgAQYywEyCBAAGIAEGMsBMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHkj3ZVCjB1i7ZHABeACQAQCYAXegAcYOqgEEMTQuNrgBA8gBAPgBAagCCsICBxAjGOoCGCfCAgQQIxgnwgILEC4YgwEYsQMYigXCAgsQLhiABBixAxiDAcICCxAAGIAEGLEDGIMBwgIOEC4YgAQYsQMYxwEY0QPCAggQLhiABBixA8ICBRAuGIAEwgIIEAAYgAQYsQPCAgsQABiKBRixAxiDAcICERAuGIAEGLEDGIMBGMcBGK8BwgIFEAAYgATCAgcQABiABBgKwgIKEAAYgAQYChjLAcICBxAAGA0YgATCAgYQABgHGB7CAggQABgWGB4YDw&sclient=gws-wiz) (Google is your friend!)
 - REMEMBER: **Don't Panic!** 
 
 
@@ -482,7 +492,9 @@ Learning to read documentation is a critical component of becoming a programmer,
 
 # For Lab Today
 
-Complete the **Solve it** exercises in PyCharm!
+Complete the **Solve it** exercises in PyCharm/Google Colab!
 - Experiment! The more you try different things, the quicker you will learn.
 - You WILL break things!
 - You CANNOT learn to program by just attending lecture!
+
+Submit a screenshot of the completed tasks verified in PyCharm, or the notebook if you complete in Google Colab (let's walk through how...)
