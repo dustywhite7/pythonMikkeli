@@ -212,4 +212,6 @@ Is the line ```x+=1``` necessary? Discuss with your neighbor.
 
 # Lab Time!
 
-Complete the problems in PyCharm! :smiley:
+Complete the problems in PyCharm or Colab! :smiley:
+
+Want more practice? Check out the problems on [HackerRank.com](https://www.hackerrank.com)
