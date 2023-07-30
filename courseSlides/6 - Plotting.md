@@ -197,6 +197,24 @@ fig.show() # or fig.write_html('figure.html')
 
 ![width:900px](bar1.png)
 
+---
+
+# A Better Bar Chart
+
+We can make a more meaningful bar chart if we group and aggregate our data first.
+
+```python
+bar_data = data.groupby('Species')['Weight'].mean().reset_index()
+
+fig = px.bar(bar_data, y="Weight", color="Species")
+fig.show() # or fig.write_html('figure.html')
+```
+
+Since species is on the axis now, we could drop the color if we so choose...
+
+---
+
+![](bar2.png)
 
 ---
 
