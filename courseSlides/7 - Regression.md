@@ -70,7 +70,7 @@ In order to establish causality, we need to meet several conditions:
 
 ![bg left 99%](regression2.png)
 
-Whoops! What if there is another variable?
+Whoops! It turns out there is another variable. What now!?
 
 ---
 
@@ -78,7 +78,7 @@ Whoops! What if there is another variable?
 
 ![bg right 80%](regression3.png)
 
-Or lots of variables??
+Yikes....
 
 ---
 
@@ -165,9 +165,9 @@ Here, we square `x2`
 
 # When OLS Fails
 
-OLS is an inappropriate model whenever you have a binary or discrete dependent variable (think "yes" or "no" questions)
+OLS is typically considered an inappropriate model when you have a binary or discrete dependent variable (think "yes or no" questions)
 
-In this case, you should use Logistic Regression instead. More details can be found in the class notes in PyCharm/Github.
+In this case, you should use Logistic Regression instead. More details can be found in the class notes on Github.
 
 ---
 
@@ -175,7 +175,7 @@ In this case, you should use Logistic Regression instead. More details can be fo
 
 ```python
 
-formula = "y ~ all_of_the_xs" 
+formula = "y ~ x1 + x2 + ..." 
 
 reg = smf.logit(formula, data)
 
