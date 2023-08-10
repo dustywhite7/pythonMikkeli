@@ -94,9 +94,16 @@ How do we choose the right network?
 This simple example comes from the [keras documentation](https://keras.io/examples/vision/mnist_convnet/)
 
 ```python
+import os
 import numpy as np
-from tensorflow import keras
-from tensorflow.keras import layers
+
+os.environ["KERAS_BACKEND"] = "torch"
+
+# Note that keras_core should only be imported after the backend
+# has been configured. The backend cannot be changed once the
+# package is imported.
+import keras_core as keras
+
 ```
 
 ---
