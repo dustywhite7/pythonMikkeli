@@ -44,9 +44,23 @@ otherwise
 
 ---
 
+# Creating variables
+
+To create a variable, we need to name it
+- Names can include numbers, letters, and underscores, but can't start with numbers
+- Try to give descriptive names
+
+
+```python
+first_condition = 300
+alpha5 = 0.05
+```
+
+---
+
 # If, Else Statements
 
-In programming, conditions are expressed through the keywords ```if``` and ```else``` (and also ```elif``` in Python)
+In programming, conditions are expressed through the keywords ```if``` and ```else``` (and also ```elif```, meaning "else if")
 
 Let's write code based on the relationship between ```a``` and ```b```.
 
@@ -212,6 +226,6 @@ Is the line ```x+=1``` necessary? Discuss with your neighbor.
 
 # Lab Time!
 
-Complete the problems in PyCharm or Colab! :smiley:
+Complete the problems in Colab! :smiley:
 
 Want more practice? Check out the problems on [HackerRank.com](https://www.hackerrank.com)
