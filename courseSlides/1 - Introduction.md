@@ -39,21 +39,20 @@ A quick tour
 # Github
 All the other files (the majority of the content) - [https://github.com/dustywhite7/pythonMikkeli](https://github.com/dustywhite7/pythonMikkeli)
 
----
+<!-- ---
 
 # PyCharm Edu
 Your workspace. We will learn more as we go through class!
 - Install
 - Load the [zip file](https://github.com/dustywhite7/pythonMikkeli/raw/master/pycharm_course/Tools_for_Data_Analysis.zip) into PyCharm as a course
 	- I'll show you how
-- Read the lessons, and do the practice problems!
+- Read the lessons, and do the practice problems! -->
 
 ---
 
-# OR Google Colab
-Your alternate workspace (although honestly I think you might all prefer it...).
-- Install
-- Download the notebooks from [github](https://github.com/dustywhite7/pythonMikkeli) and upload into Google Drive, so that you can launch them in Colab
+# Google Colab
+Your code workspace 
+- Download the notebooks from MyCourses or GitHub and upload into Google Drive, so that you can launch them in Colab
 	- I'll show you how
 - Same lessons, same practice problems!
 
@@ -492,9 +491,9 @@ Learning to read documentation is a critical component of becoming a programmer,
 
 # For Lab Today
 
-Complete the **Solve it** exercises in PyCharm/Google Colab!
+Complete the **Solve it** exercises in Google Colab!
 - Experiment! The more you try different things, the quicker you will learn.
 - You WILL break things!
 - You CANNOT learn to program by just attending lecture!
 
-Submit a screenshot of the completed tasks verified in PyCharm, or the notebook if you complete in Google Colab (let's walk through how...)
+When you're done, submit your notebook through the assignment dropbox in MyCourses
