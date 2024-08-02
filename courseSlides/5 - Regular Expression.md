@@ -20,7 +20,6 @@ How have you dealt with text in Python so far?
 
 How have you dealt with text in Python so far?
 
-- Reading/Writing CSVs
 - Test equality
 - Passing arguments to functions
 - Other ways?
@@ -431,7 +430,7 @@ Take 5 minutes to try it out. What shorthand might help?
 What if we want to find city, state abbreviation combinations (ie Miami, FL) from a text address?
 
 ```python
-re.search(r'((\b\w+\b)+(\s)?){1,3}, ([A-Z]{2})', mystring)
+re.search(r'((\b\w+\b)+(\s)?)+(?:, )([A-Z]{2})', mystring)
 ```
 
 1) "6708 Pine Street, Omaha, NE 68182"
@@ -447,10 +446,8 @@ This possible answer assumes that a city name will not consist of more than 3 wo
 What if we want to find city, state abbreviation combinations (ie Miami, FL) from a text address?
 
 ```python
-myexp = r'(?:(?:\n|, )(.*)(?:, )([A-Z]{2}))'
+myexp = r'((\b\w+\b)+(\s)?)+(?:, )([A-Z]{2})'
 ```
-
-This will get us what we want without the constraints on city name
 
 What is going on, though?
 
@@ -460,12 +457,11 @@ What is going on, though?
 
 What is this statement doing?
 ```python
-myexp = r'(?:(?:\n|, )(.*)(?:, )([A-Z]{2}))'
+myexp = r'((\b\w+\b)+(\s)?)+(?:, )([A-Z]{2})'
 ```
 `(` and `)` allow us to denote **groups** in our expression
 
-- We have one overarching group (the outer group)
-- We have a series of inner groups, breaking our code into small segments
+- We have a series of groups, breaking our code into small segments
 
 ---
 
@@ -473,7 +469,7 @@ myexp = r'(?:(?:\n|, )(.*)(?:, )([A-Z]{2}))'
 
 What is this statement doing?
 ```python
-myexp = r'(?:(?:\n|, )(.*)(?:, )([A-Z]{2}))'
+myexp = r'((\b\w+\b)+(\s)?)+(?:, )([A-Z]{2})'
 ```
 
 Within our groups, we have a new, unique symbol: `?:`
@@ -491,7 +487,7 @@ Within our groups, we have a new, unique symbol: `?:`
 3) "261 S 800 E\nSalt Lake City, UT 84102"
 
 ```python
-myexp = r'(?:(?:\n|, )(.*)(?:, )([A-Z]{2}))'
+myexp = r'((\b\w+\b)+(\s)?)+(?:, )([A-Z]{2})'
 re.findall(myexp, mystring)
 ```
 
