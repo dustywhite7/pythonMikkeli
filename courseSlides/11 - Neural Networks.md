@@ -8,7 +8,7 @@ size: 4:3
 
 # Neural Networks
 
-### For a great supplement, read [this](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/)
+### For a great supplement, read [this](https://writings.stephenwolfram.com/2023/02/what-is-chatgpt-doing-and-why-does-it-work/) article about how ChatGPT works (it's only 100 pages... :wink:)
 
 ---
 
@@ -103,6 +103,7 @@ os.environ["KERAS_BACKEND"] = "torch"
 # has been configured. The backend cannot be changed once the
 # package is imported.
 import keras_core as keras
+from keras_core import layers
 
 ```
 
@@ -139,9 +140,10 @@ Many small images come with data stored in levels from 0 to 255 (8-bits), and we
 
 ```python
 # Make sure images have shape (28, 28, 1)
+print("x_train shape before transform:", x_train.shape)
 x_train = np.expand_dims(x_train, -1)
 x_test = np.expand_dims(x_test, -1)
-print("x_train shape:", x_train.shape)
+print("x_train shape after transform:", x_train.shape)
 print(x_train.shape[0], "train samples")
 print(x_test.shape[0], "test samples")
 ```
