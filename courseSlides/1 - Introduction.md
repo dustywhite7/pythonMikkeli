@@ -75,8 +75,7 @@ Your code workspace
 
 # Getting Started in Python
 
-- Open PyCharm or Colab, and let's explore
-	- PyCharm is called an IDE, or Integrated Development Environment, and contains all the tools we will need to work with Python (and to help this class go smoothly!)
+- Open Colab, and let's explore
 	- Colab is a notebook environment, and is very popular for preliminary analysis and for use among data scientists.
 - Let's write some Python!
 
@@ -84,7 +83,7 @@ Your code workspace
 
 # A simple program in Python
 
-Copy this program into your Python interpreter (follow my lead):
+Copy this program (follow my lead):
 
 ```python
 import numpy as np
@@ -179,15 +178,8 @@ Core types are the base types that everything else in Python will be built upon:
 
 # Numbers
 
-**Common**
-
 1. Integers: ```int()```
 2. Floating-point numbers: ```float()```
-
-**Not so common**
-
-3. Complex numbers  
-4. Irrational numbers
 
 ---
 
@@ -202,7 +194,7 @@ Numbers support basic arithmetic like we are familiar with:
 
 <br>
 
-We will also be able to import greater functionality from modules like ```numpy```.
+We will also be able to import more math functions from modules like ```numpy```.
 
 ---
 
@@ -496,4 +488,4 @@ Complete the **Solve it** exercises in Google Colab!
 - You WILL break things!
 - You CANNOT learn to program by just attending lecture!
 
-When you're done, submit your notebook through the assignment dropbox in MyCourses
+When you're done, submit your notebook through the assignment dropbox in MyCourses for me to grade
