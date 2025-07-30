@@ -47,6 +47,10 @@ In Python, the `pandas` library contains the necessary code to begin working wit
 import pandas as pd # Import the library for use
 ```
 
+<br>
+
+###### *Note: There is a new library called `polars` that is quickly gaining popularity, but `pandas` is still used more broadly*
+
 ---
 
 # Creating a Data Frame
@@ -326,13 +330,12 @@ We can actually use SQL to clean our data within Pandas by making use of the `pa
 
 Get started by using the following code:
 ```python
-from pandasql import sqldf
-pysqldf = lambda q: sqldf(q, globals())
+import duckdb
 ```
 
 If it isn't installed, you can install the library by running
 ```bash
-pip install pandasql
+pip install duckdb
 ```
 Or by using the install function within PyCharm
 
@@ -343,12 +346,12 @@ Or by using the install function within PyCharm
 <br>
 
 ```python
-edited_data = pysqldf(select_statement_here)
+duckdb.sql(select_statement_here)
 ```
 
 Using SQLite syntax, we can then clean any dataset using the same syntax that we would to extract data from a database!
 
-We can aggregate, create new columns, group, and join across datasets, just like we would with SQL.
+We can aggregate, create new columns, group, and join across dataframes, just like we would with SQL. Each dataframe can be treated as a table.
 
 ---
 
@@ -359,7 +362,8 @@ In order to perform functions across an entire column, we can take advantage of 
 data = pd.read_csv("https://github.com/dustywhite7/
 pythonMikkeli/raw/master/exampleData/footballAttendance.csv")
 
-data['Average Attendance'] = data['Average Attendance'].map(lambda x: x*1000)
+data['Average Attendance'] = data['Average Attendance']
+  .map(lambda x: x*1000)
 ```
 
 Use a lambda function to multiply each record's attendance number by 1000
@@ -370,7 +374,8 @@ Use a lambda function to multiply each record's attendance number by 1000
 We can also use the `apply` method to aggregate within a Data Frame by row or column:
 
 ```python
-data[['Average Attendance', 'Year']].apply(lambda x: x.max() - x.min())
+data[['Average Attendance', 'Year']]
+  .apply(lambda x: x.max() - x.min())
 ```
 
 Calculates the difference between the min and max of the attendance and year columns

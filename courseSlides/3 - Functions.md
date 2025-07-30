@@ -115,6 +115,10 @@ Arguments to a function are **local** in scope, meaning that these special funct
 
 ---
 
+![](vegas.jpg)
+
+---
+
 # Exercise
 
 Write a function that returns the product of two numbers (note: the product of x and y is $x\times y$). Name the function ```product```.
