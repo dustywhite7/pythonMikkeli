@@ -160,7 +160,7 @@ fig.show() # or fig.write_html('figure.html')
 
 ![width:700px](plotly5.png)
 
-Note that we even get a separate trend line for each color group! :smiley:
+We even get a separate trend line for each color group! :smiley:
 
 ---
 
