@@ -48,7 +48,7 @@ How do most developed countries now choose leaders?
 
 Why?
 - NOT because they care if everyone has their opinion heard (see history of voting rights for supporting evidence)
-- Because large groups of people, when their opinions are averaged, make ~~good~~ better choices
+- Because large groups of people, when their opinions are averaged, make ~~good~~ less bad choices
 
 ---
 
@@ -56,7 +56,7 @@ Why?
 
 I had a class of students who averaged 55% on their final exam.
 
-On the other hand, a student who chose the **most popular response** to each question based on the responses of their classmates would have scored ~85%.
+Even though they were bad students, a student who chose the **most popular response** to each question based on the responses of their classmates would have scored ~85%.
 
 **In aggregate, bad students can find good answers**
 
@@ -70,6 +70,10 @@ On the other hand, a student who chose the **most popular response** to each que
 This principle also applies to statistical learning algorithms. Aggregating "poor" algorithms can lead to a "good" algorithm.
 
 Collections of learning algorithms are called **ensembles**.
+
+<br>
+
+**Many weak learners make a strong learner**
 
 ---
 
