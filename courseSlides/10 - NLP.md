@@ -26,6 +26,16 @@ Natural Language Processing (NLP) is a tool similar to regex, but allows us to t
 
 ---
 
+# But also...
+
+| NLP | LLMs (Like ChatGPT) |
+| --- | --- |
+| Used to **process** text | Used to **generate** text |
+| Part of the data cleaning pipeline | Not usually part of the pipeline, but is more of a partner in the coding process |
+| Usually invisible to end-users | Usually a product intended for end-users |
+
+---
+
 # Tasks we can complete with NLP
 
 - Identify parts of speech
@@ -35,19 +45,15 @@ Natural Language Processing (NLP) is a tool similar to regex, but allows us to t
 - Filter text for analysis
 - Conduct sentiment analysis
 
+**NLP is not the analysis itself, it's a tool to prepare text for quantitative or qualitative analysis**
+
 ---
 
 # Getting Started
 
-First, we will need to install the right libraries (and a corpus!):
+We will use `spacy`. Let's go to the website to find installation instructions. 
 
-```python
-# Load the SpaCy library (IF NEEDED)
-!pip install spacy
-
-# Load the corpus
-!python -m spacy download en_core_web_sm
-```
+[https://spacy.io/](https://spacy.io/) 
 
 A corpus is the body of knowledge that our NLP library (`spacy`) needs in order to be able to process the english language. We will use the smallest english corpus for now. 
 
@@ -155,7 +161,18 @@ Noun chunks include all of the modifiers for a given noun, and make it easier to
 from spacy import displacy
 
 sent = [i for i in doc.sents][100]
-displacy.serve(sent, style="dep")
+displacy.render(sent, style="dep")
+```
+
+---
+
+# Illustrating a sentence
+
+```python
+from spacy import displacy
+
+sent = [i for i in doc.sents][2]
+displacy.render(sent, style="ent", jupyter=True)
 ```
 
 ---
@@ -172,7 +189,7 @@ Here, we are going to use `spacytextblob` to increase the functionality of our N
 
 ---
 
-# Use `spacytextblob` for sentiment analysis
+## `spacytextblob` for sentiment analysis
 
 ```python
 import spacy
@@ -180,7 +197,7 @@ from spacytextblob.spacytextblob import SpacyTextBlob
 import requests
 
 jane = requests.get(
-"https://github.com/dustywhite7/Econ8320/raw/master
+"https://github.com/dustywhite7/Econ8320/raw/master \
 /AssignmentData/janeEyreCh1to3.txt").text
 
 nlp = spacy.load('en_core_web_sm')
@@ -188,10 +205,10 @@ nlp.add_pipe('spacytextblob')
 blob = nlp(jane)
 
 for sentence in blob.sents:
-    print("Polarity: {0:3.2f}, 
+    print("Polarity: {0:3.2f}, \
     Subjectivity: {1:3.2f}".format(
-        sentence._.polarity, 
-        sentence._.subjectivity))
+        sentence._.blob.polarity, 
+        sentence._.blob.subjectivity))
 ```
 
 ---
