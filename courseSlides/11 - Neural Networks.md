@@ -12,6 +12,11 @@ size: 4:3
 
 ---
 
+
+![](meme_nn.jpeg)
+
+---
+
 # Why?
 
 Neural networks are **advanced** machine learning models designed to replicate many observed characteristics of human brains
@@ -185,8 +190,15 @@ model.summary()
 
 ---
 
+# Specify the model
 
-![](meme_nn.jpeg)
+![](mnist_net.png)
+
+This model is ~10,000,000 times smaller than ChatGPT!
+
+---
+
+# What do all these "layers" mean??
 
 ---
 
