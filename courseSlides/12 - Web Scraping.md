@@ -25,20 +25,32 @@ What if we could automate it?
 We will use the `requests` library
 
 ```python
-import requests
-myPage = requests.get("https://brickset.com/sets/year-2020")
+url = "https://poshmark.com/category/Women-Bags"
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64;\
+    x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.\
+    0.4472.124 Safari/537.36'
+}
+
+site = requests.get(url, headers=headers)
 ```
 
 ---
 
-# Brickset
+# What's a header?
 
-Great website for learning web scraping!
-- There is a CSV export tool built into the website
-- We can compare our results against a CSV of the *correct* results
-- Also, it's about Legos!
+When your browser makes a request to a web server for a page you want to browse, it sends information about your browser to get the right information.
 
-Let's [visit the page](https://brickset.com/)
+If we don't send this, we look very strange to servers, and are quickly picked up as "bots" (which we are!)
+
+---
+
+# Poshmark
+
+Used clothing and other fashion items are resold on poshmark, so it has an ever-changing catalogue of interesting things for us to look at!
+
+Let's [visit the Women's Bags page](https://poshmark.com/category/Women-Bags) that we just requested via code.
 
 ---
 
@@ -59,7 +71,7 @@ From there, we will spend LOTS of time on Google making sure we get it right for
 ```py
 from bs4 import BeautifulSoup
 
-parsed = BeautifulSoup(myPage.text)
+soup = BeautifulSoup(site.text)
 ```
 
 Creates a structure of tags that we can navigate using the `BeautifulSoup` builtin methods
@@ -74,8 +86,8 @@ parsed.title
 
 returns
 
-```none
-<title>2020  | Brickset: LEGO set guide and database</title>
+```html
+<title>Women Bags on Poshmark</title>
 ```
 
 ---
@@ -88,76 +100,63 @@ parsed.title.text
 
 returns
 
-```none
-'2020  | Brickset: LEGO set guide and database'
+```py
+'Women Bags on Poshmark'
 ```
 
 The `.text` attribute of each tag will work this way
 
 ---
 
-# Find the Brick Sets
+# Find the Bags
 
-How can we collect information on each lego set in the results?
+How can we collect information on listing in the results?
+
+We need to identify the HTML that separates each listing from the others.
 
 ---
 
 # Find all
 
-Let's find all of the `<article>` tags in the page
+Let's find one of the "tiles" in the page (that's how the refer to them inside the page, so we can play along)
 
 ```py
-a = [i for i in parsed.find_all('article')]
+tiles = soup.find("div", class_="tiles_container")
 ```
 
-Each `<article>` tag can now be walked by examining the items contained in our list
+Each tile can now be walked by examining the items in our list
 
 ---
 
 # Article names
 
-If we want to find the titles of each lego set on a page, we can walk through our list of articles with a list comprehension:
+If we want to find the names of each listing on a page, we can walk through our list of articles with a list comprehension:
 
 ```py
-[i.h1.text for i in a]
+listings[0].find("div", class_="title__condition__container")\
+    .text.strip()
+```
+
+Note that because the listings are constantly changing, you will not get the same results as me!
+
+---
+
+# Find the price
+
+The prices are in a weird spot. It's a class called `m--t--1`, so we will extract the text from that tag to get the price:
+
+```python
+listings[0].find("div", class_="m--t--1").text.strip()
 ```
 
 ---
 
 # Find the price
 
-We can see on the page that the price is preceded by the text "RRP". Let's inspect that text, and then try to find the tags that will identify that text block.
-
----
-
-# Find the price
-
-"RRP" sits inside a `<dt>` tag. We can find those tags using the following:
-
-```py
-a[0].find('dt', text="RRP")
-```
-
-We get back
+When we use the code above, we get back something like the following:
 
 ```none
-<dt>RRP</dt>
-```
-
----
-
-# Find the price
-
-From here, we can "walk" from one tag to the next, because we can see (upon *inspection*) that the price is always in the next tag after "RRP"
-
-```py
-a[0].find('dt', text="RRP").find_next_sibling().text
-```
-
-Now we get
-
-```none
-'$179.99, 159.99€ | More'
+'$875'
 ```
 
 That is ALMOST the price!
@@ -172,38 +171,39 @@ Remember regular expression? Time for "regex" to shine:
 import re
 
 re.search(
-    r'(\d+.\d+)(\u20AC)', # \u20AC is unicode for Euro
-    a[0].find('dt', text="RRP").find_next_sibling().text, 
-    re.UNICODE).groups()[0]
+    r'([$])(\d+.\d+)', # \u20AC is unicode for Euro
+    listings[0].find("div", class_="m--t--1").text.strip(), 
+    re.UNICODE).groups()[1]
 ```
 
-And we get back
+Wrap that all in a `float()` call and we get back something like
 
 ```none
-'159.99'
+875.0
 ```
 
 ---
 
 # All the prices
 
-We got a single price, but now we want to move on, and grab the name and price of each listed item on the page. Time for a loop!
+We got a single item label and its price, but now we want to move on, and grab the name and price of each listed item on the page. Time for a loop!
 
 ```py
 data = [] # We will store information here
           # as a list of lists
 
-for i in a: # a is our list of article tags
+for i in listings: # a is our list of article tags
     row = [] # One row per result
-    row.append(i.h1.text) # Add the title
-    try: # Unless there is an error
-        row.append(
-            re.search(
-                r'(\d+.\d+)(\u20AC)', 
-                i.find('dt', text="RRP").find_next_sibling().text, 
-                re.UNICODE).groups()[0]) # Add the price
-    except: # If there is an error
-        row.append('') # Leave the entry blank
+
+    row.append(i.find("div", class_="title__condition__container")\
+    .text.strip()) # Add the title
+
+    p_string = re.search(
+            r'([$])(\d+(,\d+)?)',
+            i.find("div", class_="m--t--1")\
+            .text.strip()).groups()[1]
+    p_string = float(p_string.replace(",",""))
+    row.append(p_string) # Add the price
     data.append(row) # Put it into the data set
 ```
 
@@ -214,29 +214,59 @@ for i in a: # a is our list of article tags
 ```py
 import pandas as pd
 
-data = pd.DataFrame(data, columns = ['Set', 'Price_Euro'])
+data = pd.DataFrame(data, columns = ['Item', 'Price'])
 ```
 
-|    | Set                                  | Price_Euro   |
-|---:|:-------------------------------------|:-------------|
-|  0 | Basic Building Set with Storage Case |              |
-|  1 | Bookshop                             | 155.96       |
-|  2 | Fiat 500                             | 77.97        |
-| ... | ... | ...|
+---
+
+# Our Table (yours will differ)
+
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Item</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Vintage Coach Everett Crossbody Leather Bag</td>
+      <td>250.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>LOUIS VUITTON SAC POLOCHON 65 Monogram Canvas ...</td>
+      <td>1650.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hobo Spark Eternal Garden wristlet\n          ...</td>
+      <td>58.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Desigual 3D Floral Faux Snake Skin Leather Emb...</td>
+      <td>40.0</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
 # The next page
 
-```python
-nextPage = parsed.find('li', class_="next").a['href']
-
-# Find a list item with class of "next"
-#  inside that list item, look for the <a> tag
-#  then grab the "href" value of that <a> tag
-```
-
 We need to use the characteristics of the "next page" link to consistently identify the link as we walk through each page of search results.
+
+Look at the page. What do you see that could help you to reference the next page of results?
+
+Maybe a button with text "Next"?? How could we access that? :thinking:
 
 ---
 
@@ -250,98 +280,16 @@ data = pd.concat([data, newData], axis=0).reset_index(drop=True)
 
 ---
 
-# Creating a scraping function
-
-Now that we have all of the needed elements, we can create a script to scrape all the results from a specific search on Brickset:
-
-```py
-#Import statements
-import requests
-from bs4 import BeautifulSoup
-import numpy as np
-import pandas as pd
-import re
-```
-
----
-
-```py
-# A function to collect lego sets from search results on brickset.com
-def collectLegoSets(startURL):
-    # Retrieve starting URL
-    myPage = requests.get(startURL)
-
-    # Parse the website with Beautiful Soup
-    parsed = BeautifulSoup(myPage.text)
-    
-    # Grab all sets from the page
-    a = [i for i in parsed.find_all('article')]
-
-    # Create and empty data set
-    newData = []
-```
-
-The code on following slides is also part of the function
-
----
-
-```py
-    # Iterate over all sets on the page
-    for i in a:
-        row = []
-        # Add the set name to the row of data
-        row.append(i.h1.text)
-        try:
-            # Extract price and translate to a floating point number from string, 
-            #   append to row IF PRICE EXISTS
-            row.append(
-                float(
-                    re.search(
-                        r'(\d+.\d+)(\u20AC)', 
-                        i.find('dt', text="RRP").find_next_sibling().text, 
-                        re.UNICODE).groups()[0]))
-        except:
-            # Missing value for sets with no price, append to row 
-            #   IF NO PRICE EXISTS
-            row.append(np.nan)
-        
-        # Add the row of data to the dataset
-        newData.append(row)
-```
-
----
-
-```py
-    newData = pd.DataFrame(newData, columns = ['Set', 'Price_Euro'])
-    
-    # Check if there are more results on the "next" page
-    try:
-        nextPage = parsed.find('li', class_="next").a['href']
-    except:
-        nextPage = None
-    
-    # If there is another page of results, grab it and combine
-    if nextPage:
-        return pd.concat([newData, collectLegoSets(nextPage)], axis=0)
-    # Otherwise return the current data
-    else:
-        return newData
-```
-
-### This is the end of the function!
-
-Also, our function is RECURSIVE!! :star_struck::star_struck:
-
----
-
-# Running our function
-
-```py
-lego2020 = collectLegoSets("https://brickset.com/sets/year-2020")
-```
+# Running our code
 
 ![w:500](https://media.tenor.com/images/2028bc734372b11f931568ca25bd1024/tenor.gif)
 
+
 ---
 
-# Lab Time!
+
+# Lab Time! Creating a scraping function
+
+Now that we have all of the needed elements, we can create a script to scrape all the results from a specific category on Poshmark.
+
+Also, our function should be RECURSIVE!! :star_struck::star_struck:
