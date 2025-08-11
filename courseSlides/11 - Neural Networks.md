@@ -275,6 +275,16 @@ Does this model outperform our decision trees and random forests? Why?
 
 ---
 
+# Time series models with Neural Networks
+
+![https://www.youtube.com/watch?v=Ipi40cb_RsI](mariflow.png)
+
+---
+
+# From time series to LLM
+
+---
+
 # Lab Time!
 
 Work on the project or experiment with the neural network we made. There is no required homework today! :smiley:
