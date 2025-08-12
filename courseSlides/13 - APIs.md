@@ -280,4 +280,4 @@ At this point, we will (eventually) get a DataFrame of our results when the func
 
 # Lab Time
 
-We are using the [zippopotam.us](http://www.zippopotam.us/) API for our assignment so that nobody has to register in order to access the API
+We are using the [zippopotam.us](https://docs.zippopotam.us/) API for our assignment so that nobody has to register in order to access the API
