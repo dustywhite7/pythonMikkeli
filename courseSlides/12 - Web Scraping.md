@@ -270,6 +270,60 @@ Maybe a button with text "Next"?? How could we access that? :thinking:
 
 ---
 
+# Not this time...
+
+Looking at the site, we can access the "Next" button with the following `.find` method:
+
+```python
+nextPage = parsed.find('button', string="""
+    Next
+  """)
+```
+
+Unfortunately, it won't help us...
+
+```html
+<button class="btn btn--pagination">
+    Next
+  </button>
+```
+
+---
+
+# Try again!
+
+The website seems to use JavaScript rather than HTML to move to the next page of results. Bummer for us.
+
+BUT! If we click the next button and copy the URL, we get the following link:
+
+```
+https://poshmark.com/category/Women-Bags?max_id=2
+```
+
+---
+
+# Next Page!
+
+Now we can just do what we did before to the new page of results:
+
+```python
+nextPage = "https://poshmark.com/category/Women-Bags?max_id=2"
+
+myPage = requests.get(nextPage)
+
+parsed = BeautifulSoup(myPage.text)
+listings = [i for i in soup.find_all('div', class_="card--small")]
+
+newData = []
+
+for tile in listings:
+  ... # see notebook for full code
+
+newData = pd.DataFrame(newData, columns = ['listing', 'price'])
+```
+
+---
+
 # Combining pages of results
 
 Once we find the next page links, we can run the code we have already written for each new page of results, and concatenate our Data Frames:
@@ -280,9 +334,140 @@ data = pd.concat([data, newData], axis=0).reset_index(drop=True)
 
 ---
 
-# Running our code
+# Now we make a function
 
-![w:500](https://media.tenor.com/images/2028bc734372b11f931568ca25bd1024/tenor.gif)
+```python
+import requests
+from bs4 import BeautifulSoup
+import numpy as np
+import pandas as pd
+import re
+import time
+
+# A function to collect lego sets from search results on brickset.com
+def poshmark(startURL, page=None):
+    # keep track of what page we are on
+    if page==None:
+        page = 1
+    # Add headers to imitate a real browser
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) \
+          AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,\
+          application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Referer': 'https://www.google.com/'
+    }
+    # Retrieve starting URL
+    myPage = requests.get(startURL)
+
+    # Parse the website with Beautiful Soup
+    parsed = BeautifulSoup(myPage.text)
+
+    ... # function continued on next slide
+```
+
+---
+
+```python
+def poshmark(startURL, page=None):
+    
+    ... # continuation of function from last slide
+    
+    # Grab all sets from the page
+    listings = [i for i in soup.find_all('div', class_="card--small")]
+
+    # Create and empty data set
+    newData = []
+
+    # Iterate over all sets on the page
+    for tile in listings:
+        row = []
+        try:
+            row.append(tile.find('div', class_="title__condition__container").text.strip())
+        except:
+            row.append('')
+        try:
+            row.append(
+                float(
+                    re.search(r'(?:[$])(\d{1,3}(?:,\d{3})?)', 
+                          tile.find('div', class_="m--t--1").text).groups()[0].replace(",","")
+                )
+            )
+        except:
+            row.append(np.nan)
+        # Add the row of data to the dataset
+        newData.append(row)
+
+  ... # keeps going on another slide!
+```
+
+---
+
+```python
+def poshmark(startURL, page=None):
+    
+    ... # still finishing our function!
+
+    newData = pd.DataFrame(newData, columns = ['listing', 'price'])
+    
+    # Until we have processed 5 pages, grab the next page of results
+    if page<5:
+        # Tell our program not to load new pages too fast
+        #   by "sleeping" for two seconds before
+        #   going to the next page
+        time.sleep(2)
+        # Merge current data with next page
+        page += 1
+        nextPage = f"https://poshmark.com/category/Women-Bags?max_id={page}"
+        print(nextPage)
+        return pd.concat([newData, poshmark(nextPage, page=page)], axis=0)
+    # Otherwise return the current data
+    else:
+        return newData
+```
+
+---
+
+# Run the function
+
+```python
+bags = poshmark("https://poshmark.com/category/Women-Bags")
+
+bags
+```
+
+Get a DataFrame:
+
+<table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>listing</th>
+      <th>price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Black Wristlet and Wallet lot4 pieces total ch...</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>Fossil Snap Close Reddish Brown Crocodile Prin...</td>
+      <td>24.0</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+![w:700](https://media.tenor.com/images/2028bc734372b11f931568ca25bd1024/tenor.gif)
 
 
 ---
@@ -290,6 +475,9 @@ data = pd.concat([data, newData], axis=0).reset_index(drop=True)
 
 # Lab Time! Creating a scraping function
 
-Now that we have all of the needed elements, we can create a script to scrape all the results from a specific category on Poshmark.
+Now we have a script to scrape all the results from a specific category on Poshmark.
 
-Also, our function should be RECURSIVE!! :star_struck::star_struck:
+Also, our function is RECURSIVE!! :star_struck::star_struck:
+
+
+Now it's your turn! Add some extra information into the `poshmark` function.
